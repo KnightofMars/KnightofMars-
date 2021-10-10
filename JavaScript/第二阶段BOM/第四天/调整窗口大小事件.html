@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // window.onresize 调整窗口大小加载事件 当触发时就调用处理函数  
+        // 只要窗口大小像素发生变化 就会触发这个事件
+        // 1.传统 window.onresize = function(){} re重置 size大小 resize重置大小
+        // window.onresize = function(){
+        //     console.log('我变化了哦');
+        // }
+        // 2.window.addEVentListener('resize',function(){})
+        window.addEventListener('load',function(){
+            var div = document.querySelector('div');
+            window.addEventListener('resize',function(){
+            // console.log('我变化啦');
+            console.log(window.innerWidth);//获取当前屏幕的宽度 经常利用他来做响应式布局
+            console.log(window.innerHeight);//获取当前屏幕的高度
+            if(innerWidth < 800){
+                div.style.display = 'none';
+            }else{
+                div.style.display = 'block';
+            }
+        })
+        })       
+    </script>
+    <div></div>
+</body>
+</html>

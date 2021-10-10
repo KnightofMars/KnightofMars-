@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+        .box input{
+            outline: none;
+            border: 0;
+            width: 370px;
+           height: 30px;
+        }
+        .box img{
+            top: 2px;
+            right: 2px;
+            width: 30px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for="">
+            <img src="img/close.png" alt="">
+        </label>
+        <input type="password" name="" id="">
+    </div>
+    <script>
+        // ① 核心思路： 点击眼睛按钮，把密码框类型改为文本框就可以看见里面的密码
+        // ② 一个按钮两个状态，点击一次，切换为文本框，继续点击一次切换为密码框
+        // ③ 算法：利用一个flag变量，来判断flag的值，如果是1 就切换为文本框，flag 设置为0，如
+        // 果是0 就切换为密码框
+        var input = document.querySelector('input');
+        var img = document.querySelector('img');
+        let flag = 0;//用flag变量 来实现变化 flag=1时眼睛睁开 flag=0时眼睛闭着
+        // 2.注册事件 程序实现
+        img.onclick = function(){
+           //点击一次 flag要变化一次 我第一次将 flag写在里面 只能变化一次;
+            if(flag == 0){
+                input.type = 'text';//表单修改元素
+                img.src = 'img/open.png';
+                flag = 1;//赋值
+            }else{
+                input.type = 'password';
+                img.src = 'img/close.png';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+</html>

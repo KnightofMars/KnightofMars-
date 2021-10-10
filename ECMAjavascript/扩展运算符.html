@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // ...扩展运算符 能将数组转换为逗号分割开来的参数列表
+        const tfboys = ['易烊千玺','王源','王俊凯'];
+        function start(){
+            console.log(arguments);
+        }
+        start(tfboys);//一个对象
+        start(...tfboys);//一个数组
+        // 应用 1.数组的合并
+        let kuaizi = ['王太利', '肖央'];
+        let fenghuangchuanqi = ['曾毅','玲花'];
+        // 以前我们用这种方法合并数组
+        let zuhe = kuaizi.concat(fenghuangchuanqi);
+        console.log(zuhe);
+        // 现在我们可以这样
+        let zuhe1 = [...kuaizi, ...fenghuangchuanqi];
+        console.log(zuhe1);
+        // 原理是 上面的分割为参数列表 ...kuaizi['王太利', '肖央',]
+        // ...fenghuangchuanqi['曾毅','玲花'];
+        // 然后合并俩个数组
+        // 2.数组的克隆
+        let yizhihua = ['e','g','m'];
+        let sanyecao = [...yizhihua];
+        console.log(sanyecao); //浅拷贝 只复制地址
+        // 3.将伪数组转换为真正的数组
+        const divs = document.querySelectorAll('div');
+        const divarry = [...divs];
+        console.log(divarry);
+    </script>
+</body>
+</html>

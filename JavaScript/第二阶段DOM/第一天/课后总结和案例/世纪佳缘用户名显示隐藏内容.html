@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ipt{
+            margin: auto 200px;
+           border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- 功能分析 
+        表单框默认内容为“邮箱/ID/手机号”；颜色较浅。
+        鼠标放到表单框时，内容清空，边框颜色变为粉色。输入内容颜色较深。
+        鼠标离开，如果输入有内容则保留原有输入内容；没有输入内容则改回默认内容。颜色较浅。 -->
+        <!-- //思路 首先弄一个输入框 样式设置好 用onfocus 和 onblur来获取焦点 点击时 onfocus设置新的样式
+        点击框外 onblur设置新的样式 -->
+    <input type="text" class="ipt" value="邮箱/ID/手机号" >
+    <script>
+        // 1.获取元素
+        var  ipt  = document.querySelector('input');
+        //2.注册事件 程序实现
+        ipt.onfocus = function(){
+            if(this.value !== ''){
+            this.value = '';
+          }  
+          this.style.color = '#333';
+          this.style.borderColor = 'pink';
+          this.style.outline = 'none';
+        }
+        ipt.onblur = function(){
+            if(this.value == ''){
+            this.value = '邮箱/ID/手机号'; }          
+            this.style.color = '#999';
+            this.style.borderColor = '#999';
+        }
+        //注意事项
+        // 1.忘记加判断条件 导致鼠标失去焦点后 输入框里的文字自动变回原来值
+        // 2.改变聚焦边框颜色变为粉色时，只添加this.style.borderColor = ‘pink’；边框仍为默认的黑色，需再添加this.style.outline = ‘none’；取消默认的黑色边框。在这里我类选择器.ipt样式中没有添加border属性 导致输入框上面的粉色有上下俩条黑边 
+        // 3.更改边框颜色为粉色时应在onblur事件中改回原有边框颜色，不然在第一次点击后一直为粉色边框。
+        // 4.属性值后边应跟字符串格式内容
+    </script>
+</body>
+</html>

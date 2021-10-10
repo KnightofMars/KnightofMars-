@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="one two"></div>
+    <button >开关灯</button>
+    <script>
+        let div  = document.querySelector('div');
+        //console.log(div.classList);//显示 div 有几个class样式 样式名
+        // console.log(div.classList[0]);//显示classList中第一个样式名
+        // console.log(div.classList[1]);
+        // classList属性是HTML5新增的一个属性，返回元素的类名。但是ie10以上版本支持。
+        // 该属性用于在元素中添加，移除及切换 CSS 类。以上类名都不加点
+        // 1.element.classList.add('类名'); 添加类名 跟className相比 会在后面添加类名 不会覆盖以前的类名
+        div.classList.add('three');
+        // 2.element.classList.remove('类名'); 移除类名
+        div.classList.remove('one');
+        // 3.element.classList.toggle('类名'); 切换类名 有这个类名加toggle就是去掉这个类名 没有这个类 加togglr就是加上这个类名
+        let btn = document.querySelector('button');
+        btn.addEventListener('click',function(){//button里面不加bg样式 因为点击 让body变黑
+            document.body.classList.toggle('bg');
+        })
+    </script>
+</body>
+</html>

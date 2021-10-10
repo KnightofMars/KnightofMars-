@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+     function fn(){
+         var d1 = +new Date();
+         var array = [];
+         for(var i = 0; i < 1000; i++){
+             array.push('<div style = "width:100px; height:2px;border:1px solid blue;"></div>');
+         }
+         document.body.innerHTML = array.join('');//join 是将数组转换字符串 +是拼接字符串 将1000个div 拼接在一起  join('') 就是数组变为字符串并且用空格隔开 相当于写了1000个div
+         var d2 = +new Date();
+         console.log(d2-d1);
+     }
+     fn();//3 
+</script>
+</html>

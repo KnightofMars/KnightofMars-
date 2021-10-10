@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 我们通常用 获取元素
+    1.document.querySelector('选择器') 根据选择器返回第一个对象 记得加符号
+    2.document.getElementById('id名') 根据id名返回第一个元素对象
+    3.document.getElementClassName('类名') 根据类名返回元素对象数组
+    4.document.getElementTagName('标签名') 根据标签返回元素对象集合 
+    5.document.querySelectorAll('选择器')  根据选择器返回元素对象集合
+ -->
+    <!-- 通过这些来操作元素集合 繁琐以及逻辑性不强 所以我们去学习节点  -->
+    <!-- 利用节点层级关系来获取元素  
+        1.利用父子节点来获取元素
+        2.逻辑性强 但是兼容性较差 
+    -->
+    <!-- 网页中所有都是节点(文本 标签 属性 注释等) 用node表示 
+        所有节点都可以被js 访问 进行 修改 创建甚至删除 -->
+    <div>我是节点
+        <span>嘻嘻</span>
+    </div>
+     <ul>
+        <li>吼吼</li>
+        <li>吼吼吼</li>
+        <li>吼吼吼吼</li>
+        <li>吼吼吼吼吼</li>
+    </ul>
+<div class="yey">
+    <div class="box">
+        <span class="erweima">x</span>
+    </div>
+</div>
+    <!-- 元素节点 nodeType 是1 标签 如li head 等
+         属性节点 nodeType 是2 如href等属性
+         文本节点 nodeType 是3 文本 包括 -----换行 空格 文字  -->
+    <script>
+            var div = document.querySelector('div');
+            console.dir(div); //consloe.dir 是详细信息
+            //一般节点 有 节点类型 nodeType nodeName节点名称  nodeValue节点值 三个基本属性
+            //上个例子 div节点 的nodeType是1 表示元素节点 nodeName是div nodeValue是null 
+// 以前我们做点击关闭二维码案例时 box也随之关闭了是先获取erweima 在获取box
+            var  erwei = document.querySelector('.erweima');
+            var box = document.querySelector('.box');
+        // 现在直接用parentNode 查找父节点 就不用像上面 声明俩个量来赋值
+            console.log(erwei.parentNode);
+        //parentNode 只能找最近的父级节点 也就是只能找亲爸爸 如果找不到就返回null
+// 以前我们获取li 时 先取父亲ul 再获取li
+            var ul = document.querySelector('ul');
+            var lis = ul.querySelectorAll('li');
+            console.log(lis);
+         //现在我们用parentNode.childNode 标准规定 来获取所以子元素 但我们只需要用到元素节点 而文本节点不需要 所以不推荐使用
+            console.log(ul.childNodes);
+            console.log(ul.childNodes[0].nodeType);
+            // 如果只想要获得里面的元素节点，则需要专门处理。 所以我们一般不提倡使用childNodes
+            // var ul = document. querySelector(‘ul’);
+            // for(var i = 0; i < ul.childNodes.length;i++) {
+            // if (ul.childNodes[i].nodeType == 1) {
+            // // ul.childNodes[i] 是元素节点
+            // console.log(ul.childNodes[i]);
+            // }
+            // }
+        //我们用parentNode.children   非标准 只获取元素子节点 其他不需要 非标准 但各个浏览器都适配 推荐使用
+            console.log(ul.children);
+    </script>
+</body>
+</html>

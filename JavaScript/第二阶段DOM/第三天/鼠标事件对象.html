@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 30000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // event对象代表事件的状态，跟事件相关的一系列信息的集合。现阶段我们主要是用鼠标事件对象
+    // MouseEvent 和键盘事件对象 KeyboardEvent。
+        
+        document.addEventListener('click',function(e){
+            // 1.浏览器窗口可视区 鼠标离 上面y 和左边 x的距离
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('---------------------');
+            // 2.鼠标离文档页面内 x , y的距离比如body y30000px 往下拉 二者x 一样 y不一样 上面是固定的 pagey 是整个文档
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('---------------');
+            // 3.鼠标相当于电脑屏幕 如 浏览器缩小了 鼠标在缩小的浏览器距离电脑屏幕俩边的距离
+            console.log(e.screenX);
+            console.log(e.screenY);
+        })
+
+    </script>
+</body>
+</html>

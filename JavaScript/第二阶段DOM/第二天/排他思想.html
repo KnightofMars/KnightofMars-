@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        // 点击一个按钮时 按钮背景颜色变为粉色 其他不变
+        //1.获取元素
+        var btn = document.getElementsByTagName('button');//获取一组元素 伪数组形式
+        // 2.注册事件 一个个注册太麻烦 可以用循环思想
+        for(var i = 0; i < btn.length; i++){
+            // console.log(btn[i]);
+              btn[i].onclick = function(){
+                  for(var i = 0; i < btn.length; i++){//这个var改成let 可以使用
+                      btn[i].style.backgroundColor = '';//这里为啥不能用this 因为this是调用函数 当上一个绑定事件i是任意一个数时     this也变成任意一个数 从而达不到排他的效果
+                  }
+                  this.style.backgroundColor = 'pink';//这里不能用btn[i]的原因是 第一个for循环只是声明变量 不会执行里面的代码 因为当点击时 才会去调用函数  可以打印看看 打印值为空 btn[i]不被调用自然为空 而this是 谁调用函数 谁就是this
+                //   this可以指向当前点击的元素，for循环中的i在执行的时候就已经全部循环完了，所以会是最后一个索引，效果就不会产生，ES5要用闭包吧，es6用let改了个机制，目前是把i的声明改成let就可以了
+        }
+    }
+    </script>
+</body>
+</html>

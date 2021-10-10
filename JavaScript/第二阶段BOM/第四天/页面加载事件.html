@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.window.onload = function(){};window.onload是窗口页面加载事件文档内容全部加载完会触发此事件 包括图像 脚本文件 css文件
+    //     window.onload = function(){ //代码时从上往下执行  script 放在button上面 无法获取button标签 不执行点击事件  加onload事件后 代码会等所有元素加载完毕之后 执行script事件
+    //     var btn = document.querySelector('button');
+    //     btn.onclick = function(){
+    //         alert('点击我');
+    //     }
+    // } 
+    //     window.onload = function(){//传统的这种方式 有唯一性 最后的会覆盖前面的世界
+    //         alert(22); 
+    //     }
+        // 2.window.addEventListener('load,function(){}')     
+        window.addEventListener('load',function(){ 
+            var btn = document.querySelector('button');//要放在函数内部 我老忘记掉
+            btn.onclick = function(){
+            alert('点击我');}
+        })
+        window.addEventListener('load',function(){//这个监听器方式没有限制 想添加几个 添加几个
+            alert(220);
+        })
+        // 3.document.addEventListener('DOMContentLoaded',function(){}) content 使满意
+        // 仅当dom执行完毕 不包括样式表 图片 如果页面图片多 用onload 等图片加载完 onload触发时间需要较长时间交互效果不能实现 影响用户体验 就用这个新的加载事件
+        window.addEventListener('DOMContentLoaded',function(){//加载比load快
+            alert(330);
+        })
+    </script> 
+    <button>按钮</button>
+    <!-- <script> 
+        var btn = document.querySelector('button');
+        btn.onclick = function(){
+            alert('点击我');
+        }
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        // 核心思路 判断用户是否按下了s键 如果按下了 则把光标定义到搜索框里面
+        // 使用键盘里事件对象里面的key(以前用keycode) 来获取s键值
+        // 利用focus来获取焦点
+        var search = document.querySelector('input');
+        document.addEventListener('keyup',function(e){//这里要用keyup 用keydown 会在搜索框输入s  因为keydown是第一次按下会触发 你按下去没有松开 相当于一直按着 就会输入s 而keyup是已经按完了 弹起来 
+            console.log(e.key);
+            console.log(e.keyCode);
+             if(e.key == 's'){
+                search.focus();
+            }
+            // if(e.keyCode == 83){
+            //     search.focus();
+            // }
+        })
+    </script>
+</body>
+</html>

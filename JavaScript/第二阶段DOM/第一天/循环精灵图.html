@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+             list-style-type: none;/*设置li开始前的符号 li标签开始不是有个小圆点么或者数字 none后就没有了 */
+        }
+        .box{
+            width: 250px;
+           margin: 100px auto;
+        }
+        .box li{
+            float:left;
+            width: 24px;
+            height: 24px;
+            background-color: pink;
+            margin: 15px;
+            background: url(img/sprite.png);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+    <script>
+        //1.获取所有元素 li
+        var lis = document.querySelectorAll('li');
+        //2.遍历每个li
+        for(let i = 0; i < lis.length; i++){
+            let index = i * 44;//精灵图要自己弄 把图标弄在一列 每个图标的大小一样 横轴坐标一样 但y轴不是 y轴是间隔44 所有索引号乘以44; index 就是我们的坐标
+            
+            lis[i].style.backgroundPosition = '0 -'+index+'px'; 
+        }
+    </script>
+</body>
+</html>

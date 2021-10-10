@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // es6引入rest参数，用于获取函数实参，用来代替arguments
+        // es5 获取实参的方式
+        function date(){
+            console.log(arguments);
+        }
+        date('白芷','阿娇','baijie');//返回的是对象
+        // rest参数
+        function date1(...args){
+            console.log(args);
+        }
+        date1('掰直','阿胶','haohao');//返回的是数组 这样就可以使用一些数组的方法 比如filter some map
+        // rest参数必须放在最后面 语法规定
+        function fn(a,b,...args){
+            console.log(a);
+            console.log(b);
+            console.log(args);
+        }
+        fn(1, 2, 3, 4 ,5 ,6);
+    </script>
+</body>
+</html>

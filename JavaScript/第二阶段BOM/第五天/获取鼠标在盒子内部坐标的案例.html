@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            margin: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('click',function(e){
+         console.log(e.pageX);
+         console.log(e.pageY);
+         console.log(div.offsetLeft);
+         console.log(div.offsetTop);
+         let x  = e.pageX - div.offsetLeft;
+         let y  = e.pageY - div.offsetTop;
+         div.innerHTML = 'x的位置是' + x +'y的位置是' + y ;
+        })
+    </script>
+</body>
+</html>

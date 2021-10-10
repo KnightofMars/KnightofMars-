@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 300px;
+        height: 300px;
+        background-color: #58a;
+    }
+</style>
+<body>
+    <div id="ad"></div>
+    <script>
+        // 1.需求点击div 2s后背景变为粉色
+        let ad = document.getElementById('ad');
+        ad.addEventListener('click',function(){
+            let _this = this;//以前定义一个_this来保存this值 因为在定时器里 this指向的是window，而window里面没有style属性 我在外层作用域下保存了一个this值 里面下划线this 找不到值 向外层寻找 外层发现了当前作用域下的this 所以可以变换
+            // setTimeout(function(){
+            //     console.log(this);
+            //    _this.style.backgroundColor = 'pink';
+
+            // },2000);
+            setTimeout(() => {//使用箭头函数 省略function this是静态的 指的是声明时作用域的值 然后this指的是当前作用域下的this
+                console.log(this);
+                this.style.backgroundColor = 'pink';
+                
+            },2000);
+        });
+        // )2.需求 从数组中返回偶数
+        const arry = [1,6,10,100,25];
+        const result = arry.filter(function(item){
+            //var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
+            // 返回 true 表示该元素通过测试，保留该元素，false 则不保
+            if(item % 2 === 0){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        console.log(result);
+        const result2 = arry.filter(item =>{
+            //var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
+            // 返回 true 表示该元素通过测试，保留该元素，false 则不保
+            if(item % 2 === 0){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        console.log(result2);
+        const result3 = arry.filter(item => item % 2 === 0)//相比没有用箭头函数 是不是简洁了许多 用到了省略写法 一个参数 省略小括号 只有一个语句 省略大括号 return 一个语句 一个参数 俩个都省
+        console.log(result3);
+        
+        // 箭头函数适合在与this无关的回调 比如定时器，数组方法回调
+        // 箭头函数不适合在与this有关的回调 比如DOM事件流回调，对象的方法
+        {
+            name:'尚硅谷';
+            getName:() =>{
+                    this.name;//此时返回的不是尚硅谷 因为箭头函数返回的是外层作用域下的this值 而不是对象里的this
+            }
+        }
+    </script>
+</body>
+</html>

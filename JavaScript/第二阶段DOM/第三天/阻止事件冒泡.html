@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: pink;
+            text-align: center;
+        }
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            background-color: purple;
+            line-height: 200px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">son</div>
+    </div>
+    <script>
+        // 事件冒泡：开始时由最具体的元素接收，然后逐级向上传播到到 DOM 最顶层节点。
+        // 事件冒泡本身的特性，会带来的坏处，也会带来的好处，需要我们灵活掌握  
+        //阻止冒泡 dom推荐的标准 stopPropagation()方法 要加小括号 
+        var son = document.querySelector('.son');
+        son.addEventListener('click',function(e){
+            alert('我是son');
+            // e.stopPropagation(); //stop 阻止  propagation 传播
+            e.cancelBubble = true; //非标准 cancel 取消 bubble 泡泡
+        },false)
+        var father = document.querySelector('.father');
+        father.addEventListener('click',function(){
+            alert('我是fatehr');
+        })
+        document.addEventListener('click',function(){
+            alert('我是document');
+        })
+    </script>
+</body>
+</html>

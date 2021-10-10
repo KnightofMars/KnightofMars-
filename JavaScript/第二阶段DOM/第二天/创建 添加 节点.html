@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+    <script>
+        // 创建节点
+        // document.createElement('tagName')
+        // document.createElement() 方法创建由 tagName 指定的 HTML 元素。因为这些元素原先不存在，
+        // 是根据我们的需求动态生成的，所以我们也称为动态创建节点
+        var li = document.createElement('li');
+        //创建了还没有显示 因为浏览器不知道在哪显示 所以我们要添加节点
+        //添加节点  node.appendChild(Child) 将一个节点添加到指定父元素的子节点末尾列表 有点类似css after伪元素;
+        var ul = document.querySelector('ul');//先获取父元素 在给父元素进行添加
+        ul.appendChild(li);//注意括号里没有'';
+        //node.insertBefore(Child,指定元素); 将一个节点添加到指定父节点的子节点前面
+        var lili = document.createElement('li');//先创建 再添加
+        ul.insertBefore(lili,ul.children[0]);//我们想添加在123前面怎么办 那就用以前学过的element.children[i]; i代表第几个孩子
+        // 总结 我们在某个地方添加一个新的元素节点  先创建 后添加
+    </script>
+</body>
+</html>

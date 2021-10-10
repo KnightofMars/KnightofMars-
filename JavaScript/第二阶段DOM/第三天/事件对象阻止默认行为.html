@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>123</div>
+    <a href="http://www.baidu.com">百度</a>
+    <form action="http://www.baidu.com">
+        <input type="submit" value="提交" name="sub">
+    </form>
+    <script>
+        // 1.返回事件类型
+        var div = document.querySelector('div');
+        div.addEventListener('click',fn);
+        div.addEventListener('mouseover',fn);
+        div.addEventListener('mouseout',fn);
+        function fn(e){
+            console.log(e.type);
+        }
+        // 2.阻止默认行为 让链接不跳转 让按钮不提交 e.preventDefault() 记得写小括号 prevent阻止 default不履行
+        var a = document.querySelector('a');
+        a.addEventListener('click',function(e){
+            e.preventDefault();//dom  标准写法;
+            return false;
+        //    console.log('我被点击了');
+        }) 
+        // 3.兼容方法 在传统注册事件里面 return false 也是可以停止跳转 但return 后面的语句不会被执行
+        // a.onclick =function(e){
+        //     return false;
+        //     alert('不许点击') 
+        //     // console.log('我没有被点击');
+        // }
+        // 4.  // 普通浏览器 e.preventDefault();  方法
+            // e.preventDefault();
+            // 低版本浏览器 ie678  returnValue  属性
+            // e.returnValue;
+    </script>
+</body>
+</html>

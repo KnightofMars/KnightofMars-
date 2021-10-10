@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>123</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        // 1.e.target返回的是触发事件的对象(元素)， this 返回的是绑定事件的对象(元素);
+        // 区别 e.target点击了哪个元素 就返回哪个元素  this绑定了哪个事件 就返回谁
+        var  div = document.querySelector('div');
+        div.onclick = function(e){ //e 事件对象
+            // console.log(this);
+            console.log(e.target);
+        }
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click',function(e){
+            console.log(e.target);//打印的是 li 为什么绑定的是ul 打印的是li 因为是冒泡 先从底下找 li没有 ul有点击事件 触发 然后e.target 返回触发事件的对象
+            // console.log(this);//ul 因为我们给ul 绑定的事件
+        })
+        // 2. 了解 和this 有个特别像的属性 currentTarget 因为this简单 功能差不多不常用
+    </script>
+</body>
+</html>

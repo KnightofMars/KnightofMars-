@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color:  pink;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        var divs = document.querySelectorAll('div');
+        // 1.传统删除事件 eventTage.onclick = null;
+        divs[0].onclick = function(){
+            alert('我是猪');
+            divs[0].onclick = null;
+            // this.onclick = null; this 也行
+        }
+        // 2.方法监听器方式删除事件  eventTage.removeEventListener(type,listener[,useCapture])
+
+        divs[1].addEventListener('click',fn)//这里fn不用加括号 fn() 不加括号, 整个函数作为参数传递。加括号,函数的返回值作为参数传递。 
+        // 如果写成 fn() 那么就会传入函数调用结果，也就是 return 的内容 函数 fn 中没写 return，默认会传入 undefined 导致错误
+        function fn(){         
+               alert('你才是猪猪');
+                  divs[1].removeEventListener('click',fn);//为什么在这里remove 不像传统事件那样 因为以前是function 匿名函数 匿名怎么删掉 只能用普通函数来删掉 麻烦了点
+                // this.removeEventListener('click',fn);同上
+        }
+        // 3.被淘汰的删除方式
+        // eventTarget.detachEvent(eventNameWithOn, callback);跟第二种几乎一模一样
+    </script>
+</body>
+</html>

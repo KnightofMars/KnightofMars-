@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <button>传统注册事件</button>
+     <button>监听器注册事件</button>
+     <script>
+        //  给元素添加事件 称之为注册事件 或者绑定事件
+        // 注册事件有俩种方法 传统注册事件 和 方法监听注册方式
+        var btns = document.querySelectorAll('button');
+ // 1. 传统注册事件
+        btns[0].onclick = function(){
+            alert('hi');
+            // alert('how are you');
+        }
+        btns[0].onclick = function(){
+            alert('how are you');
+        }
+// 传统注册事件利用以on开头的事件 特点就是注册事件的唯一性  同一个元素 同一个事件 只能设置一个处理函数,最后设置的处理函数 会 覆盖掉 以前的 处理函数 
+
+
+// 2. 方法监听注册事件
+        // w3c 标准 推荐方式
+        // addEventListener() 它是一个方法
+        //  IE9 之前的 IE 不支持此方法，可使用 attachEvent() 代替 现在早就兼容了
+        //  特点：同一个元素同一个事件可以注册多个监听器
+        //  按注册顺序依次执行
+        // addEventListener 事件监听方式  add添加 event事件 listener监听  eventTarget.addEventListener(type,listener[,useCapture])
+        // type : 事件类型字符 不要带on 比如click mouseover
+        // listenr :事件处理函数 事件发生时 调用此函数
+        // useCapture:可选参数 是一个布尔值 默认是false 学习完dom事件流后 进一步学习
+        btns[1].addEventListener('click',function(){//click 里面的事件必定是字符串类型 必定加引号 且不带on
+            alert('hi');
+        })
+        btns[1].addEventListener('click',function(){
+            alert('how are you');
+        })
+        // 同一个元素 同一个事件 可以添加多个监听器(事件处理程序)
+// 3.被淘汰的attachEvent 事件监听方式
+    // eventTarget.attachEvent(eventNameWithOn, callback) 
+    // eventTarget.attachEvent()方法将指定的监听器注册到 eventTarget（目标对象） 上，当该对象触
+    // 发指定的事件时，指定的回调函数就会被执行。
+    // 该方法接收两个参数：
+    // eventNameWithOn：事件类型字符串，比如 onclick 、onmouseover ，这里要带 on
+    // callback： 事件处理函数，当目标触发事件时回调函数被调用
+// Eg:
+    //     btns[1].attachEvent('onclick',function(){
+    //         alert('222');
+    //     })  
+    
+    
+// 4.兼容性方法：
+        // function addEventListener(element, eventName, fn) {
+        // // 判断当前浏览器是否支持 addEventListener 方法
+        // if (element.addEventListener) {
+        // element.addEventListener(eventName, fn); // 第三个参数 默认是false
+        // } else if (element.attachEvent) {
+        // element.attachEvent('on' + eventName, fn);
+        // } else {
+        // // 相当于 element.onclick = fn;
+        // element['on' + eventName] = fn;
+        // } 
+        // 兼容性处理的原则：首先照顾大多数浏览器 再处理特殊浏览器
+</script>
+</body>
+</html>

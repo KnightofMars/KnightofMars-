@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // window.setTimeout(调用函数,[延迟时间毫秒数])
+        // setTimeout()用于设定一个计数器 当延迟时间到了自动执行调用函数
+        // 1.毫秒数可以省略 不写 默认为0 必须是毫秒 不能是其他单位 1s = 1000 ms
+        // 2.调用函数 可以直接写函数 也可以调用 调用不能加（）除非用这种不推荐的方式'函数名（）';
+        // 3.定时器有很多 我们经常用标识符来给定时器赋值
+        setTimeout(function(){//4.window 也可以省略
+            alert('bom!!!')
+        },5000);
+        function fn(){
+            alert('快走开 我要爆炸了 ！！！');
+        }
+        var time1 = setTimeout(fn,1000);
+        var time2 = setTimeout(fn,8000)
+    </script>
+</body>
+</html>

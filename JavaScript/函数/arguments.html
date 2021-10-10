@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //arguments 只有函数才有arguments对象，而且是每个函数都内置好了arguments
+        function num() {
+            for(var i = 0; i < arguments.length;i++){//arguments 传递了所有实参 当不知道传递实参数量时使用
+                console.log(arguments[i]);
+            }
+        }
+        num(1, 2, 3, 4, 5);
+        //arguments是伪数组具有数组的一些特性1.有length值2.按照索引进行存储3.他没有数组的一些方法 如pop（），push（）；
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <table align="center" border="1" cellpadding = '0' cellspacing = '0' width = '500' height = '600'> <!--定义表格的标签-->
+        <!-- table标签开发时不常用 经常用css 但css里面的定义和表格里面的一样 align为啥是白色 是不推荐使用的 规定表格相对周围元素的对齐方式  center表示居中 -->
+        <!-- border 规定表格是否有边框 =  1 表示有边框为1像素 border = '' 或者 0 表示没有边框 -->
+        <!-- cellpadding 规定单元边沿与其内容相对于的空白 比如单元格的文字到单元格边框的距离 有个特殊点 增加这个属性 会自动添加 cellspacing 属性 -->
+        <!-- cellspacing 规定单元格之间的空白默认俩像素 cellspacing = '' 不可以设置为无 只能用0来设置 同时存在格式问题 暂不知原因  设置width和height 表格格式变正常-->
+       <tr> <!-- tr必须嵌套在table标签里面 定义表格中的一行-->
+             <th>姓名</th><!--  th表示表头单元格 经常位于表格中的第一行 突出重要性 自动加粗居中显示 -->
+             <th>性别</th>
+             <th>年龄</th>
+             <th>老司机</th>
+        </tr>
+        <tr> 
+            <td>姓名</td><!-- td必须嵌套在tr标签里面 表示的不是列 而是单元格 一个td 就是一个单元格table data 即单元格内容 -->
+            <td>性别</td>
+            <td>年龄</td>
+            <td>老司机</td>
+        </tr>
+        <tr> 
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>老司机</td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>老司机</td>
+        </tr>
+
+    </table>
+    <!-- table不是布局标签 而是展示数据的标签 数据太多 利用表格直观的展示 -->
+</body>
+</html>

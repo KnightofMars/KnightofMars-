@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div>我是哥哥</div>
+   <span>我是弟弟</span>
+       <script>
+        //   获取元素
+        var  div = document.querySelector('div');
+        //1.  element.nextSibling是 下一个节点包括元素节点 或者文本节点  
+        console.log(div.nextSibling);//是#text 换行
+        // element.previousSibling 上一个节点 包括 元素节点 或者文本节点
+        console.log(div.previousSibling);//是#text 换行
+        // 我们只需要 元素节点 不想要文本节点怎么办
+        // 2.nextElementSibling 是下一个元素节点 但兼容性问题 ie9以上 不过现在都ie淘汰了 应该成主流了 如果没有下一个元素节点返回null 
+        console.log(div.nextElementSibling);//<span>我是弟弟<span>
+        // previousElementSibling 是上一个元素节点 同上
+        console.log(div.previousElementSibling);//null
+        // 3. 那么有什么折中办法 既不考虑兼容 又获取下一个元素节点 使用封装函数
+        function getNextElementSibling(element) {
+            var el = element; 
+        while (el = el.nextSibling) { //这个是赋值 如果下一个没有 则null不仅如此循环
+        if (el.nodeType === 1) {
+        return el;
+        }
+        }
+        return null;
+        } 
+
+       </script>
+   </span> 
+</body>
+</html>

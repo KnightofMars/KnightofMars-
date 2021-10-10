@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Date() 函数 是一个构造函数，必须要new 创建对象
+        var arr = new Array(); // 创建一个数组对象
+        var obj = new Object();// 创建一个对象实例
+        //使用Date 没有参数 就返回当前时间
+        var  date = new Date();
+        console.log(date);
+        //使用Date  有参数 一个是字符串型 如：'2020-10-1 8:8:8'，一个是数字型 2019,9,8 数字型不建议使用 会比原来月份大
+        //如果提供了至少两个参数，其余的参数均会默认设置为 1（如果没有指定 day 参数）或者 0（如果没有指定 day 以外的参数）。
+        var date1 = new Date(2019, 9, 8);
+        console.log(date1);
+        var date2 = new Date('2020-10-1 8:8:8');
+        console.log(date2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

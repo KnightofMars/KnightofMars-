@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function reverse(arry) {
+            var newArry = [];
+            for(var i = arry.length - 1; i >= 0; i--){
+                    newArry[newArry.length] = arry[i];          
+            }
+            return newArry;
+        }
+       var ary1 = reverse([1, 2, 3, 4, 5]);
+       console.log(ary1);
+       var ary2 = reverse(['red', 'yellow', 'blue', 'pink']);
+       console.log(ary2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

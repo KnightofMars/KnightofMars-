@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            width: 100px;
+            height: 50px;
+            border: solid 1px rgb(42, 156, 156);
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    <script>
+        // let 是2015年es6新增 和var对比来看使用 和var一样用来声明变量
+
+        // 1.变量不能重复声明
+        // let start = '罗志祥';
+        // let start = '小猪';//会报错
+        // 2.块级作用域 只在代码块里面有效 以前作用域是全局 函数 还有eval
+        // {
+        //     let girl = '周扬青';
+        // }
+        // console.log(girl);//会报错
+        // {
+        //     var girl1 = '周扬青';
+        // }
+        // console.log(girl1);
+        // 3.不可以变量提升
+        // console.log(song);
+        // var song = '你是谁';//var相当于 在log前面也就是最开头声明 var song;这就是所谓的变量提升 而let不允许这种情况发生 
+        // let song = '你是谁';
+        // 4.不影响作用域链效果
+        // {
+        //     let school = '黑马程序员';
+        //     function fn(){
+        //         console.log(school);//正常打印输出黑马程序员 log里面输出school 没找到 返回上一级 找到school =' 黑马程序员' 
+        //     }
+        //     fn();
+        // }
+        // 案例:
+            let items = document.getElementsByClassName('item');
+            for(let i = 0; i < items.length; i++){
+                items[i].onclick = function(){
+                //    this.style.backgroundColor = 'pink';
+                items[i].style.backgroundColor = 'pink';//这下也可以继续变换主题 但觉得没this好用 
+                }
+            }     
+            // 实现原理 如果是var var声明i是全局变量 当我们点击时里面循环已经结束 i = 3 而item 最大是2 出现错误 
+        // {
+        //     var i = 0;
+        // }
+        // {
+        //     var i = 1;
+        // }
+        // {
+        //     var i = 2;
+        // }
+        // 循环结束时 i++; i变为3
+        // console.log(window.i);//for循环里面 声明为var 时打印3 let打印undefined;
+        // 如果是let i的值互不影响
+        {
+            let i = 0; 
+            items[i].onclick = function(){//点击时没有寻找到i 返回上一层 发现是 i = 0；
+                items[i].style.backgroundColor = 'pink';
+                }
+        }
+        {
+            let i = 1; 
+            items[i].onclick = function(){
+                items[i].style.backgroundColor = 'pink';
+                }
+        }
+        {
+            let i = 2; 
+            items[i].onclick = function(){
+                items[i].style.backgroundColor = 'pink';
+                }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> .slider-bar{/*滑动条  */
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    margin-left: 600px;
+    width: 45px;
+    height: 130px;
+    background-color: pink;
+    }
+    .w{
+        width: 1200px;
+        margin: 10px auto;
+    }
+    .header{
+        height: 150px;
+        background-color: purple;
+    }
+    .banner{
+        height: 250px;
+        background-color: skyblue;
+    }
+    .main{height: 1000px;
+    background-color: yellowgreen;}
+    span{
+        display: none;
+        position: absolute;
+        bottom: 0;
+    }
+    </style>
+</head>
+<body>
+   <div class="slider-bar">
+       <span class="goback">返回顶部</span></div>
+    <div class="header w">我是头部</div>
+    <div class="banner w">我是banner</div>
+    <div class="main w">我是主体部分</div>
+   <script>
+    //1. 获取元素
+    let slider = document.querySelector('.slider-bar');//获取滚动条
+    let banner = document.querySelector('.banner')//获取banner 因为我们想让移动到banner部分时 滚动条由absolute 改为fixed 定位
+   
+    let bannerTop = banner.offsetTop;//一打开网页时 获取banner 到页面顶部的距离
+    let sliderTop = slider.offsetTop - bannerTop;//sliderTop 是当滚动条的位置有absolute 变成fixed固定在侧边栏时 滚动条到最上方的距离 - banner到最上方的距离 我们要得到这个值 因为当变为fixed时 我们要一直保持这个距离 要放在外面 因为放在里面会不停的刷新获取
+    let main = document.querySelector('.main');
+    let goback = document.querySelector('.goback');
+    let mainTop = main.offsetTop;//获取main 到页面顶部的距离
+    // 2.页面滚动事件 scroll
+    document.addEventListener('scroll',function(){
+        if(window.pageYOffset >= bannerTop){ //window.pageYOffset 获取页面被卷去的头部 也就是当你拉滚动条 上面被淹没的那部分高度 为什么不用scrollTop 因为 element.scrollTop 获取的是 元素被卷去的头部 就是盒子内容超出去了 你在盒子里有滚动条 获取的是那个被卷去的头部
+            slider.style.position = 'fixed';
+            //当直接切换为fixed时 我们拖动 会晃一下 跳到下面 因为刚开始盒子是有top值的 所以当变为fixed时 会自动获取这个top值 并且固定top值的长度 
+           slider.style.top = sliderTop + 'px';    
+        }else{
+            slider.style.position = 'absolute';
+            slider.style.top = '300px'//这里为啥不用动态的 因为最开始这个滚动条就是absolute 位置在距离最上方是300px
+        }
+        // 3.我们又想让滚动到main盒子时 开始显示文字 回到顶部
+        if(window.pageYOffset >= mainTop){
+            goback.style.display = 'block'
+        }else{
+            goback.style.display = 'none';
+        }
+    })
+    // 滚动窗口至文档中的特定位置。
+    // window.scroll(x, y) 
+    // 注意，里面的x和y 不跟单位，直接写数字
+    goback.addEventListener('click',function(){
+        // window.scroll(0,0);//注意不跟单位
+        // 我们又觉得直接滚动到最上方 不美观 想让他像动画滚动原理一样缓缓滚动
+        // obj肯定是goback
+        animate(goback,0);
+        // target是0; 我们要回到页面顶部 所以向上运动 都是负值
+    })
+    function animate(obj,target,callback){
+    console.log(callback);
+    clearInterval( obj.timer);
+    obj.timer = setInterval(function(){
+         let step = (target - window.pageYOffset) / 10;//我们明确一点就是我们现在是想让他上下滚动不是左右 但不能用obj.offsetLeft 因为Left是某个盒子到最左边的距离 而我们现在是要让我们移动到哪 从哪到顶部的距离 也就是页面滚动距离 所以我们用 window.PageYoffset
+         step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        if(window.pageYOffset == target){ 
+            clearInterval(obj.timer);
+            if(callback){
+                callback();
+            }
+    }else{
+//    obj.style.top = window.pageYOffset + step +'px'; 
+        // 我们滚动到顶部要更改的不是obj.left的位置 也不是obj.top的位置 因为你更改了obj.top的距离是让点击的对象 距离顶部是那个值 而不是整个页面滚动到顶部 所以要用window.scroll
+         window.scroll(0,window.pageYOffset + step ) //每隔15ms 运动一次 直到到达页面顶部
+} 
+},15)
+}
+   </script>
+</body>
+</html>

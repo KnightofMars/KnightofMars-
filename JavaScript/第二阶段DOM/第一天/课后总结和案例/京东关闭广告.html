@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: auto;
+            height: auto;
+        }
+        .i{ position: absolute;/*当时没好好学absolute 卡在这里半天 后来才发现 是没写定位导致标签不移动位置 */
+             width: 20px;
+            height: auto;
+            padding-top: 0px;
+            line-height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 功能描述：广告图片旁边有个小框框 点击框框里面的x 即可关闭 和关闭淘宝二维码案例相同 -->
+    <div class="box">
+        <img src="D:\vscode前端\第二阶段DOM\img\jd.png">
+        <i class="i">X</i>
+        <script>
+            // 1.获取元素
+            var i = document.querySelector('i');
+            var box = document.querySelector('.box')//不要忘记加符号
+            i.onclick = function(){
+               box.style.display = 'none';//display 显示 当点击x时系统会更改样式 隐藏整个盒子
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nav{
+            margin: 100px;
+        }
+       .nav>li{   /*nav>ul只选择nav下一级里面的ul元素
+       nav ul选择nav内所包含的所有ul元素，*/
+            position: relative;
+            float: left;
+            width: 88px;
+            height: 41px;
+            text-align: center;
+        }
+        .nav li a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 41px;
+            color: #333;
+        }
+        .nav>li>a:hover{
+            background-color: #eee;
+        }
+        .nav ul{
+            display: none;
+            position: absolute;
+            top: 41px;
+            left: 0;
+            width: 100%;
+            border-left: 1px solid #fecc5b;
+            border-right: 1px solid #fecc5b;
+        }
+        .nav ul li {
+            border-bottom:1px solid #fecc5b;
+        }
+        .nav ul li a:hover{
+            background-color: #fff5da;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#"> 微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">
+                        评论
+                    </a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" >微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">
+                        评论
+                    </a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" >微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">
+                        评论
+                    </a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" >微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">
+                        评论
+                    </a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        // 像上一章作业一样 获取元素
+        var nav = document.querySelector('.nav');
+        var lis = nav.children;//得到4个小li 就是得到4个微博
+        // 注册事件 循环注册
+        for(var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function(){
+              this.children[1].style.display = 'block';//麻了 一个play看了30分钟 可不可以认真点 上次就是 为啥这里children[1] 因为this指的是lis 而lis 有俩个儿子 一个是a 一个是ul 
+            }
+            lis[i].onmouseout = function(){
+                this.children[1].style.display = 'none';
+            }
+        }
+        //为啥不用排他思想 因为排他更麻烦 而hover直接解决
+       
+    </script>
+</body>
+</html>

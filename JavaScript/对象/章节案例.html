@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //案例1.创建一个电脑对象 该对象要有颜色，重量，型号，可以看电影，打游戏，听音乐和敲代码//这个我用字面量来创建的
+        // var computer = {
+        //     color : 'black',
+        //     weight : '300kg',
+        //     model : '炫龙骑士',
+        //     film : function(){
+        //         console.log('watch movie');
+        //     },
+        //     game : function(){
+        //         console.log('play game');
+        //     },
+        //     code : function(){
+        //         console.log('konck code');
+        //     }
+        // }
+        // for(var k in computer){
+        //     console.log(k);
+        //     console.log(computer[k]);
+        // }
+        // computer.film();
+        // computer.game();
+        // computer.code();
+        // console.log(computer.color);
+        // console.log(computer['weight']);
+        // 2.创建一个按钮对象，该对象包含宽和高，颜色还有点击行为 //这个我用构造函数创建的
+        // function Button(width, height, color){//构建函数 首字母大写
+        //     this.width = width;//this 后面跟方法名 属性名 别忘了.
+        //     this.height = height;
+        //     this.color = color;
+        //     this.click = function(click){
+        //         console.log('我点击了这个按钮');
+        //     }
+        // } //构造函数不用return返回值
+        // var button = new Button('20px', '3opx', 'blue');//创建一个对象就要用一次new
+        // for(var k in button){
+        //     console.log(k);
+        //     console.log(button[k]);
+        // }
+        // button.click();
+        // console.log(button);
+        // console.log(button.color);
+        // 3.创建一个车的对象，该对象要有重量，颜色，牌子，可以载人拉货和耕田。//这个用newobject来创建
+        // var car = new Object();//创建一个空对象
+        // car.weight = '500kg';    //利用对象名.属性 = 值 的方法赋值 每一个属性或者方法之间用;隔开。
+        // car.color = 'orage';
+        // car.model = '宝马A1000';
+        // car.do1 = function(){
+        //     console.log('我可以拉人');
+        // };
+        // car.do2 = function(){
+        //     console.log('我可以拉货');
+        // };
+        // car.do3 = function(){
+        //     console.log('我可以耕田');
+        // };
+        // for(var k in car){
+        //     console.log(k);
+        //     console.log(car[k]);
+        // }
+        // car.do1();
+        // car.do2();
+        // car.do3();
+        // 4.写一个函数实现翻转任意数组
+        // function reverse(arry){
+        //     var newArry = []
+        //     for(var i = arry.length - 1; i >= 0; i--){
+        //         newArry[newArry.length]=arry[i];
+        //     }
+        //    return newArry;
+        // }
+        // var num1 = reverse([1, 2, 3, 4, 5]);
+        // console.log(num1);
+            // 5.写一个函数可以对数字数组进行排序数组
+            function sort(arry){
+                for(var i = 0; i < arry.length - 1; i++){
+                    for(var j = 0; j <= arry.length - i - 1; j++){
+                        if(arry[j] < arry[j + 1]){
+                            var temp = arry[j+1];
+                            arry[j+1] = arry[j];
+                            arry[j] = temp;
+                        }
+                    }
+                }
+                return arry;
+            }
+            var num1 = sort([1, 2, 3, 4, 5]);
+            console.log(num1);
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

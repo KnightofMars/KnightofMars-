@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ni {
+            /*font-family: '微软雅黑';  不推荐使用汉字 因为汉字兼容性不好 使用微软雅黑的英文 Mricrosoft Yahei 谷歌浏览器初始字体 微软雅黑*/
+            font-family: 'Mricrosoft Yahei';
+            /* 字体属性也可以添加多个字体 */
+            font-family:Arial, Helvetica, sans-serif;
+            /* 添加多个字体可以更好的兼容 第一个字体没有 找第二个字体 以此类推 
+            1.每个字体之间用英文逗号隔开 
+            2.有多个英文单词的字体 之间加空格 并且加引号
+            3.尽量使用系统默认自带字体，保证在任何用户的浏览器中都能正确显示
+            4.大部分写在body标签里面 */
+        }
+        .wo {
+            /*Hiragino Sans GB 是苹果字体也是比较常用的  */
+            font-family: 'Microsoft YaHei',tahoma,arial,'Hiragino Sans GB';
+        }
+        h2 {
+            /* 标题标签比较特殊  body赋予字体大小后 对标题标签不管用 需要自己指定大小 */
+            font-size: 20px;
+            font-weight: normal;
+            /* 字体大小normal 相当于 number数值400 不加粗效果 */
+        }
+        body {
+            font-size: 16px;
+            /* 谷歌字体默认16px */
+        }
+        .recover {
+            /* font-weight: bold; */
+            /* bold 加粗效果  */
+            font-weight: 700;
+            /* number 值 记住后面不跟单位 效果和bold一样 实际开发推荐使用 让数字来决定字体变粗变细*/
+        }
+        .itical {
+            font-style: italic;
+        }
+        em {
+            font-style: normal;
+            /* 我们实际开发中很少使用italic 斜体 通常都是用将em 或者i 斜体改为正常体 */
+        }
+        .compound {
+            /* 要写一个 斜体 加粗 字体大小为16px 字体是'Microsoft Yahei' */
+            /* font: font-style font-weight font-size/line-height font-family */
+            /* 这样简写 节约代码 但一定要按照顺序来写 
+            其他属性可以省略 size和family不可以省略 必须要有 */
+            font: italic 700 16px/20px 'Microsoft Yahei';
+        }
+    </style>
+</head>
+<body>
+    <h2>你好吗</h2>
+    <p class="ni">你好呀</p>
+    <p class="wo">我很好</p>
+    <p class="recover">拼死也要克服它</p>
+    <p class="italic">同学这是你上课的状态</p>
+    <em>同学这是你下课时的状态</em>
+    <div class="compound">斜体加粗16px字体为微软雅黑</div>
+</body>
+</html>

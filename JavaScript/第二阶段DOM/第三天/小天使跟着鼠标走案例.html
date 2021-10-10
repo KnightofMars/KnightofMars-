@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/angel.gif">
+    <script>
+        var pic = document.querySelector('img');
+        document.addEventListener('mousemove',function(e){//鼠标不断移动 所以用mousemove鼠标移动事件 又因为鼠标要在整个页面移动 所以对整个页面进行监听
+            var x = e.pageX;//获取x元素的坐标
+            var y = e.pageY;//获取y元素的坐标
+            pic.style.left = x -50+ 'px';//记得要加px 老师说了一遍还是忘了
+            pic.style.top = y - 40 + 'px'; //小天使随之鼠标移动 就让图片中心随着鼠标 图片的大小差不是96 * 80 那就 减去图片一半大小 x-50 y-50 因为x y 获取的只有正数 所以减去一半
+        })
+    </script>
+</body>
+</html>

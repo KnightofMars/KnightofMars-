@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background-color: black;
+        }
+        .c-nav{
+            width: 900px;
+            height: 42px;
+            background: #fff
+            url(images/rss.png) no-repeat right center;
+            margin: 100px auto;
+            border-radius: 5px;
+            position: relative; 
+        }
+        .c-nav ul{
+            position:absolute;
+        }
+        .c-nav li{
+            float: left;
+            width: 83px;
+            text-align: center;
+            line-height: 42px;
+           
+        }
+        .c-nav li a {
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            height: 42px;
+        }
+        .c-nav li a:hover{
+            color: white;
+        }
+        .c-nav li.current a {
+            color: #0dff1d;
+        }
+        .cloud {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+    <div id ="c_nav" class="c-nav";>
+        <span class="cloud"></span>
+        <ul>
+            <li class="current"><a href="#">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">公司剪辑</a></li>
+            <li><a href="#">我是佩奇</a></li>
+        </ul>
+    </div>
+    <script>
+//         ① 利用动画函数做动画效果
+// ② 原先筋斗云的起始位置是0
+// ③ 鼠标经过某个小li， 把当前小li 的 offsetLeft 位置 做为目标值即可
+// ④ 鼠标离开某个小li， 就把目标值设为 0
+// ⑤ 如果点击了某个小li， 就把li当前的位置存储起来，做为筋斗云的起始位
+        let cnav = document.querySelector('.c-nav');//获取最大的盒子
+        let cloud = document.querySelector('.cloud');//获取云朵那个图片
+        let lis = cnav.querySelectorAll('li');//获取cnav里所有li
+        // 我们可以采用current 作为定位的思想
+        var current = 0;
+        for(let i = 0; i < lis.length; i++){
+            lis[i].addEventListener('mouseenter',function(){
+               animate(cloud,this.offsetLeft)
+            });//obj 肯定是cloud 因为是cloud 进行移动 而target 就是cloud要到的位置 也就是移动的哪个小li 哪个小li的offset值
+            lis[i].addEventListener('mouseleave',function(){
+                animate(cloud,current);
+            })//当鼠标移开后 回到current的位置
+            lis[i].addEventListener('click',function(){
+              current = this.offsetLeft;  //点击哪个小li 就把那个小li的offset赋值给current 
+              for(let i = 0; i <lis.length; i++){
+                  lis[i].className = '';
+              }
+              this.className = 'current';
+
+            })
+        }
+    </script>
+</body>
+</html>

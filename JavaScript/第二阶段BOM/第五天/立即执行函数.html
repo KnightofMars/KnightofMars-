@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn() {
+            console.log(1);
+        }
+        fn();
+        // 立即执行函数有俩个方式 
+        // 1.(function () {})() 
+        (function () {
+            console.log(2);
+        })();//第二个小括号相当于调用函数 如果有多个立即执行函数 在后面记得加; 否则会报错
+        // 2. (function (){}())
+        (function () {
+            console.log(3);
+            var num =10;//局部变量
+        }());
+        // 也可以传递参数
+        (function(a,b){
+            console.log(a+b);
+        })(2,2);
+        // 函数可以有名字
+        (function sum(a,b){
+            var num =10;//局部变量
+            console.log(a+b);
+        }(1,5))
+        // 立即执行函数的优点是 可以独立的创建一个作用域  比如俩个函数里面都有相同定义num 但不冲突 因为都是局部变量 
+    </script>
+</body>
+</html>

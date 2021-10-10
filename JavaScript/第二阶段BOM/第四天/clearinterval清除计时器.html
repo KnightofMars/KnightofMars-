@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="begin">点我开始计时器</button>
+    <button class="end">点我关闭计时器</button>
+    <script>
+        // window.clearInterval(intervalID)
+        // clearInterval()方法取消了先通过调用setInterval()建立的定时器
+        // window可以省略
+        // 里面的参数就是定时器的标识符
+        var begin = document.querySelector('.begin');
+        var end = document.querySelector('.end');
+        var time1 = null;//这里不把time1 定义在函数内部 是因为定义在函数内部为局部变量 停止函数无法调用局部变量 简单来说 就是无法调用其他函数内部的变量 所以在外面先声明 并且赋予空值
+        begin.addEventListener('click', function () {//不能连续点击 否则会输出会加快 弹幕提示是因为多个监听器同时运行的缘故 可以添加，是因为两个相同事件同时执行了，点击一次解绑按钮就可以了
+            time1 = setInterval(function () {
+                console.log('我被输出了');
+            },1000)
+        })
+        end.addEventListener('click',function () {
+            clearInterval(time1);
+        })
+    </script>
+</body>
+</html>

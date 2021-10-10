@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 字符串声明 以前是'' "",现在有``返引号
+        let str = `我是一个字符串哦！！！`;
+        console.log(str, typeof str);
+        // 1.内容中可以直接出现换行符 而单引号和双引号不可以 我们怎么解决的呢 利用+号 拼接起来
+        let str1 = '1'
+        +'2'
+        +'3'
+        +'4'
+        let str2 = `1
+        2
+        3
+        4`
+        console.log(str1);
+        console.log(str2);
+        // 2.  变量拼接 
+        let loverset = '周星驰';
+        let start =loverset + '是我觉得最悲伤的演员';
+        console.log(start);//以前都是赋值时用+号
+        let start1 = `${loverset}是我觉得最悲伤的演员`
+        console.log(start1);
+    </script>
+</body>
+</html>

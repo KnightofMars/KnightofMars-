@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .grandfather{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 100px;
+            background-color:blanchedalmond;
+        }
+        .father{
+          
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="grandfather">
+    <div class="father"> 
+        <div class="son"></div>
+    </div>
+</div>
+    <script>
+        // offset偏移量 使用相关属性可以得到该元素的大小 位置(偏移)等
+        // 1.获取元素距离带有定位父元素的位置
+// element.offsetTop 返回元素相对 带有定位父元素的上方的偏移
+// element.offsetLeft 返回元素相对 带有定位父元素的左边框的偏移
+        let father = document.querySelector('.father');
+        console.log(father.offsetLeft); //100  离body左
+        console.log(father.offsetTop);//100 离body上
+        let  son  = document.querySelector('.son')
+        // 以带有定位的父亲为准 如果没有父亲 或者父亲没有定位 以上一级有定位为准
+        console.log(son.offsetLeft);//150 不是和亲爸爸div 和body距离 所以150 如果给father div 加个定位 就显示50px
+        console.log(son.offsetTop);//100 上面没有偏移
+       // 2.获取元素自身大小(宽度高度) 当我们没有给width 或者height 相应的值 js中offsetwidth或者height会帮助我们自动获取 
+//element.offsetWidth 返回自身包括padding 边框border 内容区width的宽度 数值返回不带单位
+// element.offsetHeigtht 返回自身包括padding 边框border 内容区width的宽度 数值返回不带单位
+        console.log(father.offsetWidth);//当样式里面有padding时 会加上padding的值但不会加margin padding和boder都会撑大盒子
+        console.log(father.offsetHeight);
+        // 3.返回带有定位的父亲 否则返回body
+        console.log(son.offsetParent);//返回带有定位的父亲 否则返回的是带有定位的上几级
+        console.log(son.parentNode);//返回父节点 不管父亲有没有定位都要返回最近的亲爸爸
+
+
+        // offset系列主要要是用来获取元素位置 offsetLeft offsetTop
+    </script>
+</body>
+</html>

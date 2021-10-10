@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // ES6 允许按照一定模式从数组和对象中取值，对变量进行赋值 这被称为解构赋值
+    // 1.数组的解构 一般用的比较少
+    const F4 = ['小沈阳','赵四','刘能','宋小宝'];
+    let [xiao, zhao, liu, song] = F4;
+    console.log(xiao);
+    console.log(zhao);
+    console.log(liu);
+    console.log(song);
+    // 2.对象的解构
+        const  ZHAO = {
+            name : '赵本山',
+            age : '不详',
+            xiaopin: function(){
+                console.log('我会演小品');
+            }
+        };
+        // 不解构就是这样
+        // console.log(ZHAO.name);
+        // console.log(ZHAO.age);
+        // ZHAO.xiaopin();
+        // 解构后
+        // let {name, age ,xiaopin} = ZHAO;
+        // console.log(name);
+        // console.log(age);
+        // xiaopin();
+        // 原理 
+        let{xiaopin} = ZHAO;
+        xiaopin();
+        // 否则就是 用解构可以省略好多重复代码 也就是说新的语法就是在不断方便
+        // ZHAO.xiaopin();
+        // ZHAO.xiaopin();
+        // ZHAO.xiaopin();
+        // ZHAO.xiaopin();
+        // ZHAO.xiaopin();
+
+
+</script>
+</body>
+</html>

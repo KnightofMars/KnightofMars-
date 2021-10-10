@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 1. 获得盒子当前位置
+        //  2. 让盒子在当前位置加上1个移动距离
+        // 3. 利用定时器不断重复这个操作
+        // 4. 加一个结束定时器的条件
+        // 5. 注意此元素需要添加定位，才能使用element.style.left
+        let div = document.querySelector('div');
+
+       let timer = setInterval(function(){
+            if(div.offsetLeft >= 400){ //这里要用offset 动态获取div到body的距离 进行判断
+                    clearInterval(timer);
+            }else{
+            div.style.left = div.offsetLeft + 1 +'px';} //offset只能获取值不能改变所以用 style 记得加定位 否则无法使用style.left
+        },30)
+    </script>
+</body>
+</html>

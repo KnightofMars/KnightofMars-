@@ -1,0 +1,52 @@
+1.删除节点
+    ; node.removeChild(child);方法从dom里面删除一个子节点 返回删除的节点
+    ; eg：ul.removeChild(ul.children[0]);删除第一个孩子 
+            ; 1.这节有个小细节 就是当你不停的点击删除按钮 最后把所有子节点都删除完 按钮还可以继续点击 但没啥作用 我们可以添加一个if 条件 判断一下当 ul.children.length == 0;this.style.disabled = 'true';disabled是禁用的意思 对表单有作用
+2.删除留言案例
+    ; 1. 这个案例就是在留言版的基础上 创建节点时 li.innerHTML = text.vaule （后）+ '<a href ='javascript:;'>删除</a> 
+    ; 2. 获取值text.vaule后面+一个a链接 表示删除按钮 同时 href后面+javascript表示禁止跳转页面的意思
+    ; 在留言板案例中ul.appendChild(li);后面获取所有的a链接的元素 然后for循环绑定a链接 每点击一下a链接 就removeChild(child) 移除子节点 
+    ; 3.同样有个小细节 就是 node是父节点 也就是案例中的ul 而 获取的元素是a a的父节点是li li的父节点是ul 所有用以前的知识 移除这样写 ul.removeChild(this.parentNode);
+    ; ① 当我们把文本域里面的值赋值给li 的时候，多添加一个删除的链接
+    ; ② 需要把所有的链接获取过来，当我们点击当前的链接的时候，删除当前链接所在的li
+    ; ③ 阻止链接跳转需要添加 javascript:void(0); 或者 javascript:;
+3. 复制节点或者克隆节点
+    ; 1.node.cloneNode(); 是一个方法 如果()里面为空 或者false  称之为 浅拷贝 不拷贝节点的内容 只是复制标签
+    ; eg： let li = ul.chidren[0].cloneNode()
+    ; 2.如果()里面有true 深度拷贝 则拷贝节点的内容和标签 也就是节点本身 以及里面所有的子节点 
+    ; eg： li = ul.chidren[1].cloneNode(true)
+4.动态生成表格案例
+    ; 1.先生成数据 我们可以用数组的方式 var array = [{
+    ;     name:'',
+    ;     subject:'',
+    ;     sorce:'',
+    ; }] 数组里面可以放任意类型数据 那么放几个对象不过分吧 一个数组里有很多个对象 对象又有很多属性 这样的操作不复杂 代码少
+    ; 2.再创建行 数据要放在行里面 行tr放在表格身体 tbody里面
+    ;     所以先获取tbody 然后 for循环 i< array.length; 小于数组的长度 因为有多少个对象 就有多少行 数组有多长 就是有多少个对象；创建了多个tr行 再添加在 tbody里面 appendChild(tr);
+    ; 3.创建单元格 就是创建列数 列数又跟每一个 对象属性有关 比如例子里是 三个属性 那就是3列 
+    ;     获取对象属性 就用for(var k in array[i]) 遍历对象来获取 document.createElement('td') 创建节点  i 代表数组中的第几个对象
+    ; 4.添加属性  k代表属性 objec[k]代表属性的值  td.innerHTML = object[i][k] 数组中第i个对象 中的第k个属性 赋值给td
+    ; 5.再给每个行添加单独的删除按钮
+    ;  再每一行后面添加td 添加节点前 先给td赋值 就是像删除留言板一样添加a链接 然后tr.appendChild(td)
+    ; 6.给删除按钮添加注册 事件 这一步要在里面的for循环外 再注册一个新的循环 因为里面循环创建完了表格 你在循环给每个删除按钮注册事件 注册事件和删除留言板的 方法一样
+5. 三种创建元素的区别
+    ; 1.document.write() 将内容直接写入页面的内容流 但文档执行完毕后会导致页面重绘 基本不用 了解 
+    ; eg：docunment.write('<div>123<div>')
+    ; 2.element.innerHTML 是将内容写入某个dom节点 不会 重绘
+    ; eg：ul.innerHTML = '<a href="#"></a>';
+    ; 3.document.createElement();
+    ; eg:document.createElement('li');
+    ; 根据效率测试 innerHtml用拼接字符串的方式 1000多毫秒 += 不推荐使用
+    ; innerHTML数组的方式 把要更改的样式以字符串的形式存储在数组里 再将数组转为字符串 用join('')空格隔开
+    ; innerHTML每个进行赋值 3ms 
+    ; createElement 创建  结构清晰 但是效率不如innerHtml数组方式 10ms
+6.注册事件的俩种方式
+    ;  1.传统方式 利用on开头的事件
+    ;  eg：btn.onclick = function(){} 
+    ;  传统方式注册的唯一性 新的注册处理函数会覆盖旧的注册处理函数
+    ;  2.方法监听器方式
+    ;  eventTarget.addEventListner(type,listner[,useCapture]) event 事件 target目标 useCapture 使用捕获 
+    ;  type 事件类型字符 不需要加on 
+    ;  listener 事件处理函数 
+    ;  useCapture 可选参数 false或者空 表示冒泡 true 表示捕获
+    ;  btn.addEventListner('click',function(){},flase)

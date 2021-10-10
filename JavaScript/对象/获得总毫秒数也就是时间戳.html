@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //获得Date的总毫秒数 也是就时间戳 因为时间是不会重复 是一直往前走的 就像邮戳 盖上即是确定 ，毫秒数是指从1970年1月1号 开始到现在的毫秒数 
+        //1.通过valueOf（） ， getTime（）获得
+        let time = new Date();
+        console.log(time.valueOf());
+        console.log(time.getTime());
+        //2. 常用的写法 +new Date();
+        let time1 = +new Date();
+        console.log(time1);
+        //3.h5 新增的获得总毫秒数
+        console.log(Date.now());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

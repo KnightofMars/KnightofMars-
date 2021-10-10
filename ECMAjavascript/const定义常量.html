@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const SCHOOL = '尚硅谷';
+        // console.log(SCHOOL);
+        // 1.默认大写(潜规则) 当然小写也行
+        // 2.一定要赋值
+        // const A;//会报错
+        // 3.变量的值不可以修改
+        // SCHOOL = 'NIHAO';//报错
+        // 4.也是块级作用域
+        // {
+        //     const PLAYER = 'UZI';
+        // }
+        // console.log(UZI);//报错
+        // 5.对于对象的属性 数组的元素做修改，不算对常量做的修改，不会报错 因为数组所指向的地址没有发生改变 虽然里面的变量变了
+        const TEAM = ['UZI','MLXG','NING'];
+        TEAM.push('MEIKO');
+        console.log(TEAM);//添加成功没有报错
+        // TEAM = 1000;//这样修改就算报错
+    </script>
+</body>
+</html>

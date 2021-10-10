@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //以前我们查找数组索引是眼睛数 现在我们直接来用方法
+        //1.indexOf（）
+        let arry = [1,2,3,4,5,2];
+        console.log(arry.indexOf(2));//1
+        console.log(arry.indexOf(6));
+        //indexOf() 是从前查找 有重复的只去第一个 如果没有查找到返回-1 实际更常用
+        //2.lastIndexOf()
+        let arry1 = [1,2,3,4,5,2];
+        console.log(arry1.lastIndexOf(2));//5
+        //lastIndexof（） 是从后向前查找 有重复的取最后面的索引值 注意虽然从查找但是 索引值和indexOf（）一样 不会变 同样没有查找到返回-1
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

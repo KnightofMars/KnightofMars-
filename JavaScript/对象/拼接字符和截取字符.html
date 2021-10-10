@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //字符串操作方法
+        //concat（'字符串1'，'字符串2'....）
+        let  str = 'andy';
+        console.log(str.concat('red'));
+        //substr('截取的起始位置','截取几个字符')这个将会被遗弃
+        let str1 = '吕超磊是哈麻皮';
+        console.log(str1.substr(0,3));
+        // str.substring(indexStart[, indexEnd]) 
+        // indexStart
+        // 需要截取的第一个字符的索引，该索引位置的字符作为返回的字符串的首字母。
+        // indexEnd
+        // 可选。一个 0 到字符串长度之间的整数，以该数字为索引的字符不包含在截取的字符串内就是下标从0开始 所以end 就不会是下标 永远是前一个
+        // 如果 indexStart 等于 indexEnd，substring 返回一个空字符串。
+        // 如果省略 indexEnd，substring 提取字符一直到字符串末尾。
+        // 如果任一参数小于 0 或为 NaN，则被当作 0。
+        // 如果任一参数大于 stringName.length，则被当作 stringName.length。
+        // 如果 indexStart 大于 indexEnd，则 substring 的执行效果就像两个参数调换了一样。见下面的例子。
+        console.log(str1.substring(1,6)); 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

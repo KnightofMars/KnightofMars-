@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点我停止计数器</button>
+    <script>
+        // window.clearTimeout(timeoutID)方法 取消了先前调用的setTimeout建立的定时器
+        var button = document.querySelector('button');
+        button.addEventListener('click',function () {
+           clearTimeout(time1);
+        //    1.window 可以省略
+        //    2.里面的参数timeoutID就是定时器里面的标识符
+        })
+            var time1 = setTimeout(function () {
+            alert('bom!!!')
+        },5000)   
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // symbol是一个基本数据类型 es6新引入，表示独一无二的值，是js中第七种数据类型，是一种类似于字符串的数据类型
+        // symbol的特点
+        // 1.symbol的值是唯一的，用来解决命名冲突问题
+        // 2.symbo的值不能与其他数据进行运算
+        // 3.symbol定义的对象属性 不能使用for...in来循环遍历，但是可以使用reflect.ownKeys来获取对象的所有键名
+
+        // 创建symbol 相当于无数次创建
+        let s = Symbol();
+        console.log(s ,typeof s);
+        let s1 = Symbol('你好');
+        let s2 = Symbol('你好');
+        console.log(s2 === s1);//false
+        // symbol.for创建 相当于你创建过一次 再有重复会返回去寻找 找到即再不创建 所以相等
+        let s3 = Symbol.for('我不好');
+        let s4 = Symbol.for('我不好');
+        console.log(s3 === s4);//true
+
+        // 不能与其他数据类型进行运算 加减乘除啦
+        // let result = s+100 错误
+
+        // js中最基础的数据类型
+        // USONB you are so niu bility
+        // u undefined
+        // s Symbol String
+        // o Object
+        // n null Number
+        // b Boolean
+
+         // symbol在多人协作时，数据命名即使加前缀也有可能导致冲突 数据多时 用symbol会更好 更便捷
+        class Cache {
+            static data = {};
+            static set(name, value){
+                return(this.data[name] = value);
+            }
+            static get(name){
+                return this.data[name];
+            }
+        }
+        Cache.set('hdcms', 'houdunren.com');
+        console.log(Cache.get('hdcms'));
+
+        let user = {
+            name: 'apple',
+            desc: '资料',
+        }
+        let cart = {
+            name: 'apple',
+            desc: '购物车',
+        }
+        Cache.set('apple', user);
+        Cache.set('apple',cart);
+        console.log(Cache.get('apple'));//只有cart 没有user 这时我们用这种方法 命名前加前缀
+        let user1 = {
+            name: 'apple',
+            desc: '资料',
+        }
+        let cart1 = {
+            name: 'apple',
+            desc: '购物车',
+        }
+        Cache.set('user-apple', user1);
+        Cache.set('cart-apple',cart1);
+        console.log(Cache.get('user-apple'));
+        console.log(Cache.get('cart-apple'));
+
+        // 我们用symbol来解决 看起来好像和前缀差不多 但多人协作更有用
+        let user2 = {
+            name: 'apple',
+            desc: '资料',
+            key: Symbol('资料')
+        }
+        let cart2 = {
+            name: 'apple',
+            desc: '购物车',
+            key: Symbol('资料')
+        }
+        Cache.set(user2.key,user2);
+        Cache.set(cart2.key,cart2);
+        console.log(Cache.get(user2.key));
+        console.log(Cache.get(cart2.key));
+
+
+        // 如果我们要读取symbol 有点类似私有属性 for in 和for of遍历是无法读取到的
+        let symbol = Symbol('这是一个symbol类型');
+        let weinan = {
+            name: '超磊',
+            [symbol]: '无敌超人'
+        };
+        for (const key in weinan){
+            console.log(key);
+        }
+        for (const key1 of Object.getOwnPropertySymbols (weinan)){
+            console.log(key1);//这个getOwnpropertySymbols 只能遍历symbol一个属性
+        }
+        for (const key2 of Reflect.ownKeys(weinan)){//这个Reflect.ownKeys可以遍历所有属性
+            console.log(key2);
+        }
+        // 利用这个特殊属性 也可以将数据进行私有化 
+    </script>
+</body>
+</html>

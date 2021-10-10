@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li>我是第1个节点</li>
+        <li>我是第2个节点</li>
+        <li>我是第3个节点</li>
+        <li>我是第4个节点</li>
+    </ol>
+    <script>
+            var ol = document.querySelector('ol')
+            //1.firstchild 第一个子节点 不管是元素还是文本
+            console.log(ol.firstChild);
+            console.log(ol.lastChild);
+            //2.新增firstElementChild 取的是元素节点 但兼容性差  ie9以上才可以
+            console.log(ol.firstElementChild);
+            console.log(ol.lastElementChild);
+            //3.实际开发 既没有兼容性问题 又可以获取元素节点 
+            console.log(ol.children[0]);
+            console.log(ol.children[ol.children.length-1]);
+            //如果直接 console.log(ol.children.length-1) 那么获取的是伪数组的下标 3
+    </script>
+</body>
+</html>

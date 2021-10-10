@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 构造函数创建的格式
+        // function 构造函数名（首字母大写）() {
+        //     this.属性 = 值;//属性和方法名前必须添加this
+        //     this.方法 = function () {}
+        // }
+        // new 构造函数名（）；//每使用一个new 构建函数名（）就创建一个对象
+        function Start(name, age, sex) {
+            this.name = name ;
+            this.age = age;
+            this.sex = sex ;
+            this.sing = function (sing) {
+                console.log(sing);
+            }
+        }//构造函数不需要return；
+      var re  =  new Start('刘德华',18,'男');
+      console.log(typeof re);//返回值类型是对象
+      console.log(re.name);
+      console.log(re['age']);
+      re.sing('冰雨');
+      var zxy = new Start('张学友', 20, '女');
+      console.log(zxy.name);
+      console.log(zxy.sex);
+      zxy.sing('李香兰');
+    //   案例:王者荣耀
+    function Wz(name, type, blood) {
+        this.name = name;
+        this.type = type ;
+        this.blood = blood;
+        this.attrck = function(attrck){
+            console.log(attrck);
+        }
+    }
+    var houyi = new Wz('后裔', '射手型', 100);
+    console.log(houyi.name,houyi.type, houyi.blood);
+    houyi.attrck('远程攻击');
+    var lianpo = new Wz('廉颇', '近战型', 500);
+    console.log(lianpo.name,lianpo.type,lianpo.blood);
+    lianpo.attrck('近战攻击');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+     //1.替换字符replace('被替换的字符','替换的字符') 只会替换第一个字符哦
+        let str = 'andy';
+        console.log(str.replace('a','b'));
+        //例子 有一个数组abcoefoxyozzopp； 把里面的o替换成* 用for循环
+        let str1 = 'abcoefoxyozzopp';
+        for(let i = 0; i < str1.length; i++){
+            str1 = str1.replace('o','*');//需要一个新的变量给str1 赋值 否则结果还是原来的字符串
+        }
+        console.log(str1);
+    //老师的想法 while循环 条件是用 indexOf来判断里面有没有o 然后替换  比我的想法时间少 资源浪费少
+            let str2 = 'abcoefoxyozzopp';
+            while(str2.indexOf('o') !== -1){
+                str2 = str2.replace('o','*');
+            }
+            console.log(str2);
+    //2.字符转换为数组 split('分隔符')  可以和join对比的来记 join(是将数组转换为字符串)
+        let str3 = 'red,pink,blue';
+        console.log(str3.split(','));
+        let str4 = '吕超磊&杨炳堂&毛哲%剪辑';
+        console.log(str4.split('&'));
+    //3.课下作业  toUpperCase() 将字符串转换为大写然后返回
+        let str5 = 'wshinima';
+        console.log(str5.toUpperCase());
+        // toLowercase() 将字符串转换为小写并返回
+        let str6 = 'WOCAONIMA';
+        console.log(str6.toLowerCase());
+    //作业 
+    //JavaScript实战练习题
+    // 给定一个字符串例如:“abaasdffggghhjkkfsssss3444343";
+    // 问题如下:1、字符串的字节长度
+    // 2、取出指定位置的字符，如: 0,3,5,9等
+    // 3、查找指定字符是否在以上字符串中存在，如:i，C，b等
+    // 4、替换指定的字符，如: g替换为25 ss替换为b等操作方法
+    // 5、截取指定开始位置到结束位置的字符串，如:取得1-5的字符串
+    // 6、找出以上字符串中出现次数最多的字符和出现的次数
+    // 7、遍历字符串，并将遍历出的字符两头添加符号“@’输出全当前的文档资面
+    let str7 = 'abaasdffggghhjkkfsssss3444343';
+    console.log(str7.length);
+    console.log(str7[0],str7[3],str7.charAt(5),str7.charAt(9));
+    if(str7.indexOf('i') !== -1){
+        console.log('字符串中出现i字符');
+    }else if(str7.indexOf('C') !== -1){
+        console.log('字符串中出现C字符');
+    }else if(str7.indexOf('b') !== -1){
+        console.log('字符串中出现b字符');
+    }
+    while(str7.indexOf('g') !== -1){
+        str7 = str7.replace('g',25);
+    }
+    while(str7.indexOf('ss') !== -1){
+        str7 = str7.replace('ss','b');
+    }
+    console.log(str7.substring(1,5));
+    let o = {};
+    for(let i = 0;i < str7.length; i++){
+        let chars = str7.charAt(i);
+        if(o[chars]){
+            o[chars]++;
+        }else{
+            o[chars] = 1;
+        }
+    }
+    console.log(o);
+    let max = 0;
+    let ch = '';
+    for(var k in o){
+        if(o[k]>max){
+           max = o[k];
+            ch = k;
+        }
+    }
+    console.log('最多出现的次数是'+max);
+    console.log('最多出现的字符是'+ch);
+    console.log(str7);
+    console.log(str7.split(''));
+    // let str8 = str7.split('')
+    // console.log(str8.join('@')); 这个方法开头和结尾都没有@
+    let str8 = str7.split('');
+    for(let j = 0; j < str8.length; j++){
+        str8[j] = '@' + str8[j] +'@'
+    }
+    console.log(str8);
+</script>
+</head>
+<body>
+    
+</body>
+</html>

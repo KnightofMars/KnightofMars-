@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>    </div>
+    <script>
+        // TouchEvent 是一类描述手指在触摸平面（触摸屏、触摸板等）的状态变化的事件。这类事件用于描述一个或多个触点，使开发者可以检测触点的移动，触点的增加和减少，等等
+        // touchstart、touchmove、touchend 三个事件都会各自有事件对象
+        // 1.touchstart 手指触摸到一个dom元素时触发
+        let div = document.querySelector('div');
+        div.addEventListener('touchstart',function(e){
+        //   console.log(e);
+        //   touches  正在触摸屏幕的所有手指的一个列表
+        //   targetTouches 正在触摸当前DOM元素手指上的一个列表 相当于一个数组
+        // 如果侦听的是一个dom元素 俩个效果其实是一样的
+        // changeTouches 手指状态发生改变了的列表 从无到有 从有到无变化
+        // 因为平时我们都是给元素注册触摸事件 所以重点记住targetTouches
+        console.log(e.targetTouches[0]);//获取正在触摸dom元素的第一个手指的相关信息 比如手指的坐标
+        })
+        // 2.touchmove  手指在一个dom元素上滑动触发
+        div.addEventListener('touchmove',function(){
+            
+        })
+        // 3.touchend 手指从一个dom元素上移开时触发
+        div.addEventListener('touchend',function(e){
+            // console.log(e);
+           })
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //常用的键盘事件
+        //  1.传统的方式
+        // keyup 按键弹起的时候触发
+        document.onkeyup = function(){
+            console.log('我弹起了哦');
+        }
+        // 2.addEventListener监听器事件
+        // keydown 按键按下的时候触发 识别功能键 ctrl shift 方向键
+        document.addEventListener('keydown',function(){//一直按着一直弹出按下了down键
+            console.log('我按下了down键');
+        })
+        // keypress 按键按下的时候触发 不识别功能键 比如ctrl shift 方向键
+        document.addEventListener('keypress',function(){
+            console.log('我按下了keypress键');//keypress:识别【0~9，a~z，标点，运算符，空格，回车】；不包括【退格，Del，F1~F12，其他所有功能键】
+        })
+        // 这三个事件有执行顺序 keydown --- keypress ---keyup
+    </script>
+</body>
+</html>

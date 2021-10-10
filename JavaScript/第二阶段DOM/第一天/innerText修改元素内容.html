@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div,
+    p{
+        width: 300px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        background-color: pink;
+    }
+</style>
+</head>
+<body>
+   <button>显示系统时间</button>
+   <div>某个时间</div> 
+   <p>1123</p>
+   <script>//当我们点击按钮时 里面的div文字会发生变化
+   //1.获取元素
+       var button = document.querySelector('button')
+       var div = document.querySelector('div');//要获取俩个值 一个是按钮 一个是文字
+    //2.注册事件
+       button.onclick = function(){
+        div.innerText = time();
+        //    div.innerText = '2021-9-1';  固定写死
+    }
+        function time(){
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;//别忘记在月份后面加一
+        let date1 = date.getDate();
+        let week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        let day = date.getDay();
+      return '今天的日期是:'+ year +'年 '+month+'月 '+date1+'日 '+week[day];
+   
+       }
+       //我们元素可以不用添加事件 即不用点击 打开网页就立刻 刷新时间
+       var p =document.querySelector('p');
+       p.innerText = time();
+   </script>
+</body>
+</html>

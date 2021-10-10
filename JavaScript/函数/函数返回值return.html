@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sum(num1, num2){//函数只是实现某种功能 ，最终的结果需要返回给函数调用者函数名（），通过return来实现
+            return num1+num2;
+        }
+        console.log(sum(1,2));
+        // 1.return是终止函数
+        function getmax(num1 ,num2){
+            return num1+num2;
+            alert('我是不会被执行的');//return函数后面的语句不会执行
+        }
+        console.log(getmax(1, 2));
+        function fn(num1 ,num2){
+            return num1,num2;//2.只会输出第二个num2，return不会输出多个值，只能输出一个，那一个值为最后一个要输出的。
+        }
+        console.log(fn(1,2));
+        function n(num1, num2) {
+            return [num1 + num2, num1 - num2, num1 * num2, num1/num2];//3.想要输出多个值，可以采用数组的形式
+        }
+        var re = n(1,2);
+        console.log(re);
+        // 4.如果函数return则返回return后面的值，如果没有则返回undefined
+        function fun1(num1) {
+            return num1;
+        }
+        console.log(fun1(1));
+        function fun2(num2) {
+            
+        }
+        console.log(fun2(2));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

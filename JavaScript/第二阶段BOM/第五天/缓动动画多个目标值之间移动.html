@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        span{
+            display: block;
+            left: 0;
+            top: 300px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>  
+    <button class="btn500">点击让超磊到500</button>
+    <button class="btn800">点击让超磊到800</button>
+    <span>超磊</span>
+    <script>
+        // 缓动动画就是让元素运动速度有所变化，最常见的是让速度慢慢停下来
+        // 思路：
+        // 1. 让盒子每次移动的距离慢慢变小，速度就会慢慢落下来。
+        // 2. 核心算法： (目标值 - 现在的位置 ) / 10 做为每次移动的距离 步长
+        // 3. 停止的条件是： 让当前盒子位置等于目标位置就停止定时器
+        //  4. 注意步长值需要取整
+        let span = document.querySelector('span');
+        let btn500 = document.querySelector('.btn500');
+        let btn800 = document.querySelector('.btn800');
+        function animate(obj,target){
+            clearInterval( obj.timer);
+            obj.timer = setInterval(function(){
+                //步长值写在里面
+                // Math.ceil() 函数返回大于或等于一个给定数字的最小整数
+                 // let step = Math.ceil((target - obj.offsetLeft) / 10);//step 有除号就代表除不尽 就是小数 而小数又会影响这个判断条件 所以把小数变为整数 一整数可以让判断条件成立 二ceil向上取整 又可以让盒子到达终点达终点
+                // Math.floor() 返回小于或等于一个给定数字的最大整数。
+                // let step = Math.floor((target - obj.offsetLeft) / 10);//点击800后 ceil向上取整 数值正常盒子停下来了 但是当再点击500时 盒子到509px 是因为step 是动态的 点击500 target变成500 500- offset 800 = -300 所以向左移动 比如 -8.1 取-9还是 -8 当然是-9 因为走了-8.1 不能退回去变为-8 呀 想想数轴  -9 和 -8 哪个大 当然是-8 大 用ceil就会到-8 但我们需要-9 所以用floor
+                // 面对这俩种情况 我们选择判断条件 三元运算符
+                 let step = (target - obj.offsetLeft) / 10;
+                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if(obj.offsetLeft == target){ 
+                    clearInterval(obj.timer);
+            }else{
+           obj.style.left = obj.offsetLeft + step +'px';//step 会一直变小 
+        } 
+        },15)
+        }
+        btn500.addEventListener('click',function(){
+            animate(span,500);
+        })
+        btn800.addEventListener('click',function(){
+            animate(span,800);
+        })
+       
+        
+    </script>
+</body>
+</html>

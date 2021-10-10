@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function getRadom(max, min){
+        //     min = Math.ceil(min);
+        //     max = Math.floor(max);
+        //     return Math.floor(Math.random() * (max - min + 1)) + min; 
+        // }
+        // var num2 = getRadom(1, 10);
+        //自己的想法
+        // while(num != num2){
+        //     var num = prompt('猜猜看数字游戏\n请输入一个数字:');
+        //     if(num > num2){
+        //     alert('数字大了，请继续猜哦');
+        //     }else if(num < num2){
+        //         alert('数字小了，请继续猜哦');
+        //     }
+        // }
+        // alert('猜对啦，你真棒!');
+        //老师的想法
+        //  while(true){
+        //     var num = prompt('猜猜看数字游戏\n请输入一个数字1~10之间:');
+        //         if(num > num2){
+        //         alert('数字大了，请继续猜哦');
+        //         }else if(num < num2){
+        //             alert('数字小了，请继续猜哦');
+        //         }else {
+        //         alert('猜对啦 ，请退出去');
+        //         break;
+        //               }
+        //          }
+        //只有10次机会的 猜数字游戏
+        function getRadom(max, min){
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; 
+        }
+        var num2 = getRadom(1, 50);
+        //我的想法
+        // var num3 = 10;
+        // while(num3 != 0){
+        //     var num = prompt('猜猜看数字游戏\n请输入一个数字1~10之间:\n你还剩'+num3+'次机会');
+        //         if(num > num2){
+        //         alert('数字大了，请继续猜哦');
+        //         num3--;
+        //         }else if(num < num2){
+        //             alert('数字小了，请继续猜哦');
+        //         num3--;
+        //         }else {
+        //         alert('猜对啦 ，请退出去');
+        //         break;
+        //               }
+        //          }
+        //          if(num3 == 0){
+        //             alert('对不起 你的机会已经用完，游戏结束');
+        //          }
+        //老师的想法
+        for(var i = 10; i > 0; i--){
+            var num = prompt('猜猜看数字游戏\n请输入一个数字1~10之间:\n你还剩'+i+'次机会');
+                if(num > num2){
+                alert('数字大了，请继续猜哦');
+                }else if(num < num2){
+                    alert('数字小了，请继续猜哦');
+                }else {
+                alert('猜对啦 ，请退出去');
+                break;
+                      }
+                 }  
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

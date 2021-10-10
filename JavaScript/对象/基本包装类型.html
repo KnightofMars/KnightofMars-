@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.基本包装类型 将简单数据类型包装成复杂数据类型 这样简单数据类型就有了方法
+        let  str = 'ansy';
+        console.log(str.length);
+        // 对象有属性和 方法  复杂数据类型也有属性和方法 简单数据类型对象没有 那为啥可以用length属性呢
+        // 是系统自带的转换 思路如下
+        let temp = new String('ansy');//将简单数据类型转换为复杂数据类型  new就是复杂 调用了构造函数
+        str = temp;//将temp放在str 里面
+        temp = null; //销毁临时变量temp
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

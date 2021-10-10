@@ -1,0 +1,6 @@
+1.引入相关文件  就是css 和 js文件 在swiper package里面 swiper-bundle 加min就是压缩的 体积小的
+2.按照语法规范使用 打开需要使用的那个网页 查看源代码 复制css 和js 
+3.https://www.swiper.com.cn/usage/index.html具体查看
+
+https://www.bootcss.com/ bootstrap 框架 
+http://www.superslide2.com/ superslide插件 大话主席

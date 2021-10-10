@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: pink;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        //行内样式  element.style.样式
+        // 1.获取元素
+        var box = document.querySelector('div');
+        // 2.注册事件 程序运行
+        box.onclick = function(){
+            box.style.backgroundColor = 'purple';//注意js中采用驼峰命名法 在css中background-color表示背景颜色 而js中则是backgroundColor 驼峰命名
+            box.style.width = '100px';
+        //js其实不是修改css 而是在产生了行内式 因为行内式权重较高 所以在样式冲突的情况下 行内式优先从而起到了更改样式的作用
+        }
+    </script>
+</body>
+</html>

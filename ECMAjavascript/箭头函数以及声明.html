@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 普通函数声明
+        // let fn = function(a,b){
+        //     return a+b;
+        // }
+        // 箭头函数声明  =>
+        let fn1 = (a,b) => {
+            return a+b;
+        }
+        let result = fn1(2,3);
+        console.log(result);
+        // 1.this是静态的 this始终指向声明时所作作用域下的this的值 不是像以前一样 谁调用我 this指向谁
+        function getName() {
+            console.log(this.Name);
+        }
+        let getName2 = () => {
+            console.log(this.Name);
+        }
+        window.Name = '渭南';
+        const school ={
+            Name: 'WeiNan'
+        }
+        getName();
+        getName2();
+        // 我们使用call调用 call大体就是mdn是这样描述的call() 允许为不同的对象分配和调用属于一个对象的函数/方法 简单来说就是可以改变函数内部的this值。
+        getName.call(school);//改变 WeiNai
+        getName2.call(school);//未改变 渭南
+
+        // 2.不能作为构造实例化对象
+        // let Person = (name, age) => {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // let me = new Person('xiaoming', 39);
+        // console.log(me);
+        // 3.不能使用 arguments 变量
+        // let fn2 = () =>{
+        //     console.log(arguments);
+        // }
+        // fn2(1, 2, 3);
+        // 4.箭头函数的缩写
+            // 1)可以省略小括号 当前只有一个形参的时候
+            let fn3 = a => {
+                return a + a;
+            }
+            console.log(fn3(5))
+            // )2 省略花括号 当代码只有一条语句的时候,此时return语句也必须要省略 
+            // 而且语句的执行结果就是函数的返回值
+            let fn4 = (a,b) =>  a*b;
+            console.log(fn4(9,9));
+            // 当只有一个变量 一条语句时 也可以省略小括号 同1
+            let pow = a => a*a;
+            console.log(pow(9));
+    </script>
+</body>
+</html>

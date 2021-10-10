@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //math.random（） 随机数 随机出[0,1) 0到1之间 可以选择0 但不可以随机到1 （）没有参数
+        console.log(Math.random());//随机出一个浮点数
+        //求俩个数之间的随机 并且包含这俩个整数 可以用函数来
+        function getRadom(min, max){
+            return Math.floor(Math.random()*(max - min + 1)) + min;
+        }
+        console.log(getRadom(1,10));
+        var arr = ['李濠江', '任鑫泉', '吕超磊', '毛哲', '薛佳乐', '李明浩'];
+        alert('今天的值日生是:'+arr[getRadom(0,arr.length-1)]);
+        // console.log(arr[getRadom(0,arr.length-1)]);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

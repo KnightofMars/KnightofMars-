@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function backday() {
+            var year = prompt('请你输入一个年份:');
+            if(judge(year))
+            {
+                alert('该2月份有29天');
+            }else{
+                alert('该2月份有28天');
+            }
+        }
+        backday();
+        function judge(num1) {
+            var flag = false;
+            if(num1 % 4 == 0 && num1 % 100 != 0 || num1 % 400 ==0){
+                // alert('该年份为闰年');
+                 flag =true;
+        //    }else{
+        //         // alert('该年份为平年');
+            }
+            return flag;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

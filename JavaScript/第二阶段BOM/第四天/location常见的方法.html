@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击我</button>
+    <script>
+        let button = document.querySelector('button');
+        button.addEventListener('click',function(){
+            //location.assign('http://www.itcast.cn');//跟href一样 可以跳转页面并且可以记录历史后退页面 称为重定向页面
+            // location.replace('http://www.itcast.cn'); //替换当前页面 跟assign一样可以跳转 但是不可以后退页面 不记录历史
+            location.reload(true)//点击按钮相当于点击刷新按钮 括号内为空 相当于直接刷新或者按f5 当括号内为true 相当于强制刷新  有的时候你开发过程中代码写对了 出不来 可能是因为缓存 此时ctrl+f5 强制刷新 页面就出来了
+        })
+    </script>
+</body>
+</html>

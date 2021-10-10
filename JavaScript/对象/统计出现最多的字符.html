@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 判断字符串'abcoefoxyozzopp'中出现最多的字母 并且输出次数
+        // 核心算法：利用charAt（）来遍历字符串
+        // 把每个字符存储给对象 如果对象有该属性即+1
+        // 遍历对象得到最大值和次数
+        // var obj = {
+        //     age:18
+        // }
+        // if(obj['age']){
+        //     console.log('这个对象有该属性');
+        // }else{
+        //     console.log('这个对象没有该属性');
+        // }
+        let str = 'abcoefoxyozzopp';
+        let o = {};
+        let max = 0;
+        for(let i = 0; i < str.length; i++){
+            let chars = str.charAt(i);
+            if(o[chars]){
+             o[chars]++;
+        }else{o[chars] = 1;} 
+    }
+    console.log(o);//[a:1 ......]
+    let ch ='';
+//   遍历对象
+        for(var k in o){//相当于数组遍历
+        //k 得到属性名
+        // o[k]得到属性值
+        if(o[k]>max){
+            max = o[k];
+            ch = k;            
+        }
+        }
+        console.log(max);
+        console.log('最多的字符是'+ch);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

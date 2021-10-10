@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.js引擎运行js分为俩步，预解析和 代码执行
+        // (1).预解析会把所有var function提升到当前作用域最前面
+        //(2).代码执行 然后按照代码书写的格式 从上往下执行。
+        // 2.预解析分为变量预解析（变量提升）和函数预解析（函数提升）
+        // （1）.变量提升就是把所有变量声明提升到当前作用域最前面，而不进行赋值操作
+        // （2）函数提升就是把所有函数声明 提升到当前作用域的最前面，而不进行 函数调用
+     // 例子：
+        // 1.
+        console.log(num);//undefined
+        var num = 10;//按照逐行解释 num输出是应该是错误，但这个输出是undefined 是因为变量提升。
+        // 代码相当于：
+        // var num;
+        // console.log(num);
+        // num = 10;
+        // 2.
+        // console.log(num1);
+        // 3. 
+        num();//函数没有声明前就可以调用 因为有预解析 函数提升 所有可以调用
+        function num() {
+            console.log(666);
+        }
+        // 4.
+        var num2 = function () {
+            console.log(777);
+        }
+        num2(); //这个是本来就可以调用的正确用法
+
+
+        ///////////////////////////////////////////
+        num3();//但在这里调用却出现错误，原因这是匿名函数，var num3申明了变量没声明函数，而为啥匿名函数可以用是因为num3等于函数的值 在这里先变量提升 没有赋值给变量 ，所以就无法调用函数。函数表达式调用必须写在函数表达式后面
+        var num3 = function () {
+            console.log(666);
+        }
+        // 相当于这个代码：
+        // var num3;
+        // num3(); //根本就没有这个函数 所以你调用失败了， 那为啥num3（）放在末尾就可以呢，是因为num3=function（）   赋完值后就有这个函数了。
+        // num3 = function () {
+        //     console.log(666);
+        // }
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            margin: 100px auto;
+        }
+        .message{
+            color: #999;
+            display: inline-block; /* 使信息和文本框在一个水平线上 inline-block 行内块 */
+            font-size: 12px;
+            background: url(img/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+        .wrong{
+            background-image: url(img/wrong.png);
+            color: red;
+        }
+        .right{
+            background-image: url(img/right.png);
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- //首先要判断失去焦点 onblur 
+    //如果正确输入 图标变绿 显示输入正确 如果输入错误图标变红 显示输入错误
+    //改变样式和文字 大量 所以要用到ClassName修改样式 -->
+    <div>
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+    <script>
+        //1.获取元素
+        var message = document.querySelector('p');
+        var ipt = document.querySelector('.ipt');
+        // 2.注册事件 绑定元素
+        ipt.onblur = function(){
+            if(this.value.length < 6 ||this.value.length >16){
+                console.log('错误');
+                message.className = 'message wrong';
+                message.innerHTML ='请您输入6~16位的密码';
+            }else{
+                console.log('正确');
+                message.className = 'message right';
+                message.innerHTML = '密码正确'
+            }
+        }
+    </script>
+</body>
+</html>

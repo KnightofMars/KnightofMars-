@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 200px;"></div>
+    <script>
+        let div = document.querySelector('div');
+        console.log(div.offsetWidth);//200 1.offset可以得到任意样式表中的样式值 2.返回数值没有单位 3.如果加上padding后 offsetWidth获取的值增加 因为包含padding border 和width 4.offset只能读不可以写数据
+        console.log(div.style.width);//空1. style 只能得到行内式样式表中的值 再加上style = 200px后 style.width可以得到样式值 为200px 2.加单位 3.有没有padding style.width 都不会变不管padding和border 4.style.width 是可读写 既可以读也可以写
+        // div.offsetWidth = '300px'; 没有任何作用
+        div.style.width = '300px';//成功
+        // 我们想获取元素大小 用offset
+        // 我们想更改元素 用style
+    </script>
+</body>
+</html>

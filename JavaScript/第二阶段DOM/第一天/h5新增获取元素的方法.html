@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">我是一个盒子</div>
+    <div class="box">我是第二个盒子</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>尾页</li>
+        </ul>
+    </div>
+    <script>
+        //1.根据类名来获取某些元素集合 getElementsByClassName
+        var box = document.getElementsByClassName('box');
+        console.log(box);
+        //2.querySelector 返回指定选择器的第一个对象 记得要加符号 比如类选择 .box id选择器就是#nav  ie8代以上 及移动端使用 
+         var firstBox = document.querySelector('.box');
+         console.log(firstBox);
+         var nav = document.querySelector('#nav');
+         console.log(nav);
+         var lis = document.querySelector('li');
+         console.log(lis);
+         //3.querySelectorAll 返回指定选择器的所有元素对象集合
+         var box = document.querySelectorAll('.box');
+         console.log(box);
+         var li = document.querySelectorAll('li');
+         console.log(li);
+    </script>
+</body>
+</html>

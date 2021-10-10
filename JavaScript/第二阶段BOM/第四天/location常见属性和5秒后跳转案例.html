@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击我跳转</button>
+    <div></div>
+    <script>
+        // window 对象给我们提供了一个 location 属性用于获取或设置窗体的 URL，并且可以用于解析 URL 。 因为这个属性返回的是一个对象，所以我们将这个属性也称为 location 对象。
+        // 统一资源定位符 (Uniform Resource Locator, URL) 是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的 URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它
+        // url一般语法格式为:
+        // protocaol://host[:port]/path/[?query]#fragment
+        // http://www.itacat.cn/index.html?name=andy&age=18#link
+        // protocal : 通信协议 常用的http ftp等
+        //host: 主机域名 www.itcast.cn
+        // port：端口号 可选 省略时默认端口号为0
+        // path：路径 比如index.html
+        // query ： 参数 通常以键值对形式通过&分隔开来 比如?name=andy&age=18
+        // fragment：片段 #后面跟内容 常见于链接锚点
+        // 下面关于浏览器操作 重点掌握 href和search
+        // 1.location.href 获取或者整个url
+        // 2.location.host 返回主句域名
+        // 3.返回端口号 如果未写返回 空字符串
+        // 4.location.pathname 返回路径
+        // 5.location.search 返回参数
+        // 6.location.hash 返回片段
+
+
+
+
+        // 5s跳转案例
+        var button = document.querySelector('button');
+        var div = document.querySelector('div');
+        button.addEventListener('click',function(){
+        //    console.log(location.href);
+          location.href = 'http://www.itcast.cn';
+        })
+        var time = 5;
+        fn();
+        setInterval(fn,1000)
+        function fn(){
+            if(time > 0){
+                div.innerHTML = '还有'+time+'秒链接跳转';
+                time--;
+                // location.href = 'http://www.itcast.cn';
+            }else{
+                div.innerHTML = '现在跳转中';
+                location.href = 'http://www.itcast.cn';
+        }
+    }
+
+    </script>
+</body>
+</html>

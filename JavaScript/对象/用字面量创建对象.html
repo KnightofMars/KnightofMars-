@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var obj（这个是对象名称） = {}  创建一个空的对象
+        var obj = {
+            name : '吕超磊',//这里是键值对形式  类似css 属性与属性 ，方法之间用逗号隔开哦。
+            age : 18,
+            sex : '男',
+            sayHi : function () {//方法冒号后面跟匿名函数
+                console.log('都是吹牛');
+            }
+        }
+        //使用对象1.对象名.属性名
+        console.log(obj.name);
+        //2.对象名['属性名']
+        console.log(obj['age']);
+        // 3.调用方法 对象名.方法名（）记得小括号
+        obj.sayHi();
+        // 案例 狗对象
+        var dog = {
+            name : '王可可',
+            type : '阿拉斯加犬',
+            age : 5 ,
+            color : 'red' ,
+            bark : function () {
+                console.log('汪汪汪');
+            } ,
+            showFilm : function () {
+                console.log('演电影');
+            }
+        }
+        console.log(dog.name,dog.age,dog.color);
+        console.log(dog['type']);
+        dog.bark();
+        dog.showFilm();
+</script>
+</head>
+<body>
+    
+</body>
+</html>

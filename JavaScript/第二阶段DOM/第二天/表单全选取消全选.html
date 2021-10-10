@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            width: 300px;
+            margin: 100px auto;
+        }
+        table{
+            border-collapse: collapse;
+            border-spacing: 0; /*消除单元格边距 */
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+        th,td{
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        th{
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+        td{
+            font: 14px "微软雅黑";
+        }
+        tbody tr{
+            background-color: #f0f0f0;
+        }
+        tbody tr :hover{
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="jall"/>
+                        </th>
+                        <th>商品</th>
+                        <th>价钱</th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="j">
+                <tr>
+                    <td>
+                        <input type="checkbox"/>
+                    </td>
+                    <td> iphone13</td>
+                    <td>100000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"/>
+                    <td>ipad</td>
+                <td>3000</td>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox"/>
+                        </td>
+                        <td>ipad Air</td>
+                        <td>2000</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <td>apple watch</td>
+                        <td>3000</td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // 1.思路 先点击头部thead的复选框 让表格的每行都选择 再点击每行都取消 所以先注册元素
+        var jall = document.querySelector('#jall');//全选按钮 querySelector 是什么选择器加什么符号 id 加# 忘记了好多次
+        console.log(jall);
+        var js = document.querySelector('#j').getElementsByTagName('input')//下面所有的复选框
+        // 2.注册事件
+        jall.onclick = function(){//console.log(this.checked); // this.checked 它可以得到当前复选框的选中状态如果是true 就是选中，如果是false 就是未选中
+            for(let i = 0; i < js.length; i++){
+                js[i].checked = this.checked;
+            }
+        }
+        //先遍历 给每个小复选框注册事件 下面复选框需要全部选中 每次点击都有循环看看下面复选框是不是有没选中的 有一个没选中 上面就不选中
+        for(let j = 0; j < js.length;j++){
+          
+            js[j].onclick = function(){     
+                var flag = true;//控制全选按钮是否选中
+                for(let i = 0; i < js.length;i++)//每次点击下面的复选框都要检查4个小按钮是否被全选中
+                if( !js[i].checked){
+                    flag = false;
+                    break;//退出for循环 只要有一个没被选中 剩下的就不需要判断了
+                }
+                jall.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+ 1.排他思想
+    ; 1.当我们点击按钮时 只想让被点击的按钮变色 其他按钮不变
+    ; 2.点击时 onclick函数内部用for循环来遍历每个按钮 让每个按钮颜色变为无    
+    ;         btn[i].style.backgroundColor = ''  
+    ; 3.然后点击时 用this来表示被点击的那个按钮 更改样式 让其变为自己喜欢的颜色
+    ;         this.style.backgroundColor='pink'
+2.百度换肤
+;     思路 1.先获取元素
+;     var imgs = document.querySelector('ul').getElementsByTagName('img');
+;     这样写更加严谨 ul标签里面的img标签 也告诉我们用  加. 这种方法
+;     2.然后循环遍历每一个img标签 进行注册事件
+;     3.onclick函数 每点击一下更改背景图片的显示路径 
+;     主要掌握 this.src代表图片路径
+;     document.body.style.backgroundImage = 'url('+ this.src +')';
+;     图片的地址就是 this.src 为什么this.src不在''里面 因为this.src在字符串里面就变成常量了 而不是变量 所以引引加加
+; 3.  表格隔行换色 思路
+    ; 先获取行元素 for循环注册事件 给每一个需要变色的行 注册
+    ; 然后用onmouseover 经过 onmouseout离开 事件 当鼠标经过时颜色样式更改变为粉色 当鼠标离开时颜色样式更改为无 
+    ; element.onmouseover 鼠标经过 
+    ; element.onmouseout  鼠标离开 和onclick用法差不多
+    ;this.className = 'bg'; 这是更改样式的方法
+4.表单全选取消 
+    ; 这个比较复杂 需要多看看  把整体分为2部分 首先全选框 选择后 底下每个选择框都要被选择 相反取消选择后 每一个选择框都要不被选择  然后 底下的选择框进行判断 每一个都被选择后 更改全选框 把全选框checked设为true 只要有一个没被选择 退出循环 
+    ; 1.肯定是获取元素  全选框 和选择框的集合 进行获取元素
+    ; 2.注册事件 先看全选框  jall.onclick{for循环 遍历选择框  js[i].checked = this.checked }
+    ; this.checked是精华 只要全选框 jall被选择 则this.checked返回的是true 否则是false 同样 js[i]每个要么是true 被checked 要么是false 
+    ; 3.再看选择框的集合点击注册事件 先for循环选择框集合js  此时定义一个特殊的变量 flag = true;  
+    ; 4.接着for循环 if（！js[i].checked）判断选择框集合组 有没有没被选择的 只要有一个js[i] 没有被选择 flag变为flase 并且退出for循环 如果全部被选择 则jall.checked = flag; 
+5.获得自定义属性的值
+    ; 1.获取元素的属性
+    ; (1)element.属性
+    ; <div id="demo" index = '1' class="head"></div>
+    ;  var div = document.querySelector('div');
+    ; console.log(div.id);//demo
+    ; (2)element.getAttribute('属性')
+    ; console.log(div.getAttribute('id'));//demo
+    ; 2.设置元素属性
+    ; (1)element.属性 = '值'
+    ; div.id ='xixi'
+    ; (2)element.setAttribue('属性','值')
+    ; div.setAttribute('index','2')
+    ; 3.消除元素属性
+    ; element.removeAttribute('属性')
+    ; div.removeAttribute('index')
+6.tab栏切换
+    ; 俩个排他思想 1. 第一个排他为了只有被点击的tab栏 li才会变色 干掉所有人for循环注册事件 留下我自己 this调用的那个函数被更改样式
+    ; 2.第二个排他思想  只有被点击的tab栏 才会显示自己独有的内容 item  干掉所有人for循环更改样式为空 留下我自己  这里用一个很有意思的index 来更改样式 this比element[i]好的原因在于 es5 是闭包 i 无法正确返回 而this比较简单方便 虽然是过去的东西 
+    ;3.可以学习一下这个思想 在第一个排他 for循环之前 给每一个tab栏 li 设置 li.setAttribue('index','i'); 自定义属性 
+    ; var index =  this.getAttribute('index') 获取自定义属性 
+    ; 当li被点击 展示自己独有的内容时 item[index].style.display = 'block';
+
+    ; ① Tab栏切换有2个大的模块
+    ; ② 上的模块选项卡，点击某一个，当前这一个底色会是红色，其余不变（排他思想） 修改类
+    ; 名的方式
+    ; ③ 下面的模块内容，会跟随上面的选项卡变化。所以下面模块变化写到点击事件里面。
+    ; ④ 规律：下面的模块显示内容和上面的选项卡一一对应，相匹配。
+    ; ⑤ 核心思路： 给上面的tab_list 里面的所有小li 添加自定义属性，属性值从0开始编号。
+    ; ⑥ 当我们点击tab_list 里面的某个小li，让tab_con 里面对应序号的 内容显示，其余隐藏（排他
+    ; 思想
+7.h5自定义属性
+    ; h5 引入自定义属性是为了保存并使用数据 为了保存一些数据在页面 不用保存在数据库
+    ; 1.过去我们用 element.属性 获取元素属性但这是非标准 获取不了元素自定义属性
+    ; 我们采用getAttribute('属性') 来获取属性
+    ; div.getAttribute('getTime');
+    ; 2.我们也可以采用setAttribute('属性',值)来添加属性
+    ; div.setAttribue('data-time',2)
+    ; 3.因为有些自定义属性容易引起歧义 业内规范自定义属性时 要用data-开头做属性名并赋值
+    ; 4.h5新增的element.dataset.自定义属性名 或者 element.dataset['自定义属性名'];自定义属性名 注意去掉data-
+    ; 5.当自定义属性名中 - 太多时 采用驼峰命名法如data-index-name 就是dataset.indexName
+8.节点简介
+    ; 1.我们通常获取元素有俩种方法 一种是用document.querySelector('选择器');等方法
+    ; 逻辑性不强 繁琐 
+    ; 二是节点层级关系获取 父子兄弟节点获取
+    ; 逻辑性强  兼容性差
+    ; 2.网页中所有内容都是节点 如 文本 标签 空格 换行 注释 用node 表示
+    ; 节点要用 节点类型nodeType 节点值 nodeValue 节点名称 nodeName
+    ; 元素节点的 nodeType 是1
+    ; 属性节点   nodeType 是2
+    ; 文本节点   nodeType 是3
+    ; 3.把节点分为不同的层级关系 常见的是父子兄弟关系  node.parentNode
+    ; 如 erweima.parentNode 查找父节点 不用像dom获取元素 声明俩个变量赋值 
+    ; parentNode只能找最近的父级 也就是亲爸爸 
+    ; parentNode.childNode 是找子节点 我们最需要使用的元素节点 而 parentNode.childNode可以获取所有节点 包括文本节点 实际中不使用
+    ; 采用封装函数的方法
+    ; 4.我们用非标准方法 parentNode.children 
+    ; 只获取元素节点
+9.节点的第一个节点和最后一个节点
+    ; 1.实际中不怎么使用的方法
+    ; parentNode.firstChild 返回第一个子节点 同样获取所有节点 找不到返回null
+    ; parentNode.lastChild 返回最后一个子节点同样获取所有节点 找不到返回null
+    ; 2.新增的firstElementChild 获取元素节点 兼容性差 但现在已经2021 可以适配所有浏览器
+    ; parentNode.firstElementChild 返回第一个元素节点 找不到返回null
+    ; parentNode.lastElementChild 返回最后一个元素节点 找不到返回null
+    ; 3.实际开发中 既没有兼容性问题 也可以获取所有元素节点
+    ; parentNode.children[i]
+    ; 获取第一个元素 parentNode.children[0]
+    ; 获取最后一个元素 parentNode.children.length-1
+10.兄弟节点
+    ; 1.node.nextSibling 返回当前元素的下一个兄弟节点找不到返回null 同样包含所有节点
+    ; node.previousSibling previous以前的 Sibling兄弟姊妹的意思  返回当前元素的上一个兄弟节点 找不到返回null 同样包含所有节点
+    ; 2.node.nextElementSibling 是下一个元素节点 同上
+    ; node.previousElementSibling 返回当前元素的上一个节点
+11.创建添加节点
+    ; 把一个节点添加到我们想要的地方 分为俩步 创建节点 添加节点
+    ; 1.创建节点
+    ; document.creatElement('tagName');
+    ; 动态生成 原先不存在 tagName指的是html元素
+    ; 2.添加节点 
+    ; node.appendChild(child)
+     ;ul.appendChild(li);//注意括号里没有'';
+    ; 将一个节点添加到指定父节点的子节点列表的末尾 类似after选择器
+    ; node.insertBefore(child,指定元素)
+    ; 将一个节点添加到指定父节点的子节点前面类似before选择器
+12.留言板案例
+    ; ① 核心思路： 点击按钮之后，就动态创建一个li，添加到ul 里面。
+    ; ② 创建li 的同时，把文本域里面的值通过li.innerHTML 赋值给 li
+    ; ③ 如果想要新的留言后面显示就用 appendChild 如果想要前面显示就用insertBefor

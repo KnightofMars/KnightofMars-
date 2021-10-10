@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .first{
+            font-size: 36px;
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            margin-top: 100px;
+        }
+        .change{
+            font-size: 30px;
+            width: 300px;
+            height: 300px;
+            background-color:red;
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>我是文本</div>
+    <div class="first">我是测试文本</div>
+    <script>
+        // 1.获取元素
+        var box  = document.querySelector('div');
+        var box1  = document.getElementsByClassName('first');
+        console.log(box);
+        console.log(box1);
+        //2.注册事件 程序运行
+        box.onclick = function(){
+            //如果用style来写大量修改的样式太麻烦 style行内式适合少量 简单的
+            // this.style.fontSize = '24px';
+            // this.style.width = '200px';
+            this.className = 'change';
+            // console.log('dianjichenggong');
+        }
+ // Element.className = ('样式'); 适合样式过多 或者功能复杂的情况
+//  className是更改盒子样式  如 div class ='first' className 会更改为 div = 'change'
+// className 会更改元素类名 覆盖元素属性如：
+            box1[0].onclick = function(){//为什么要用box1[0] 因为这个是具体的某个元素 而getElementsClassName获取的是一个集合
+                // this.className = 'change';
+                //如果不想覆盖 原来的属性也想要 那就用css 多选择器的方法 先写原先的id再空格 加新增的id
+                this.className = 'first change';
+                // console.log('dianji');
+            }
+
+
+  
+    </script>
+</body>
+</html>

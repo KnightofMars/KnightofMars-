@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        function getmax(arry){//arry用来接收一个数组
+            var temp = arry[0];
+            for(var i = 0; i < arry.length; i++){
+                 if(temp < arry[i]){
+                     temp = arry[i];
+                 }
+            }
+            return temp;
+        }
+        var re = getmax([5, 2, 99, 101, 67, 77]);//实际开发中我们常用一个变量来接收函数的返回值使其更简单
+        console.log(re);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

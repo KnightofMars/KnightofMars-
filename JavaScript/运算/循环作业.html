@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+      
+        // var sum = 0;
+        // var average = 0;
+        // 0.求100以内数字总和
+        // for(var i = 1; i <= 100; i++){
+        //     sum += i;
+        // }
+        // console.log(sum);
+        // average = sum / 100;
+        // console.log(average);
+        // 1.求100以内偶数总和
+        // for(var i = 1; i <= 100; i++){
+        //      if( i % 2 == 0){
+        //         sum += i;
+        //      }
+        // }
+        // console.log(sum);
+        // 2.求7的倍数之和
+        // for(var i = 1; i <= 100; i++){
+        //      if( i % 7 == 0){
+        //         sum += i;
+        //      }
+        // }
+        // console.log(sum);
+        // 3.求输入用户名和密码
+        // do{
+        //     var str = prompt('请输入用户名:');
+        // }while(str !== 'admin')
+        // do{
+        //     var str1 = prompt('请输入密码:');
+        // }while(str1 != '123456')
+        // 4.求个位数为3的总和
+        // for(var i = 1; i <= 100; i++){
+        //      if( i % 10 == 3){
+        //         console.log(i)
+        //       continue;
+        //      }  sum += i;
+        // }
+        // console.log(sum);
+          // 小组作业atm机
+          var money = 100;
+          do{
+          var str = prompt('请输入你要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+          var num1 = parseInt(str);
+          switch(num1){
+            case 1 :
+              var save = prompt('请输入您存的钱数:');
+              money = money + save * 1;
+              alert('您现在的钱数是:'+money+'元');
+              break;
+            case 2:
+              var withdraw = prompt('请输入您取钱的数目:');
+              money = money - withdraw;
+              alert('您现在的钱数是:'+money+'元');
+              break;
+            case 3:
+              alert('您现在的余额为'+money+'元');
+              break;
+            case 4:
+              alert('您现在正在退出!');
+              break;
+            default :
+              alert('请你按照提示输入，谢谢!');
+          }
+        }while(num1 != 4)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

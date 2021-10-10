@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <p>
+        你好
+        <span>123</span>
+    </p>
+    <script>
+        var div = document.querySelector('div');
+//1.innerText 是ie推出 非标准 不识别html标签   去除空格和换行
+      // div.innerText = '<strong>我是一只小小鸟，怎么也飞不高</strong>';//我们想在div里添加文字并且加粗 可以看到结果是不行的
+// 2.innerHTML 是w3c 推出 标准 不省略标签  保留空格和换行 这个更推荐使用
+        div.innerHTML = '<strong>我是一只小小鸟</strong>,怎么也飞不高';//可以正确显示
+//这俩个属性是可读写的 可以获取里面的元素
+        var p = document.querySelector('p');
+       console.log(p.innerHTML);
+       console.log(p.innerText);
+    </script>
+</body>
+</html>

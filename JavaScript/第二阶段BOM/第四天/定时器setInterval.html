@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setInterval()方法重复调用一个函数,每隔这个时间 就去调用这个函数
+        // 语法规范 setInterval(回调函数,延迟时间)
+        // 1.window 可以省略
+        // 2.setInterval每隔一段延迟时间 就去调用回调函数 会调用很多次 重复调用这个函数
+        // setTimeout 只能调用一次 就结束了这个定时器  延迟时间结束 调用回调函数
+        setInterval(function () {
+            console.log('我被调用了');
+        },1000)
+        // 毫秒数可以省略 不写 默认为0 必须是毫秒 不能是其他单位 1s = 1000 ms
+        // 调用函数 可以直接写函数 也可以调用 调用不能加（）除非用这种不推荐的方式'函数名（）';
+        // 定时器有很多 我们经常用标识符来给定时器赋值
+    </script>
+</body>
+</html>

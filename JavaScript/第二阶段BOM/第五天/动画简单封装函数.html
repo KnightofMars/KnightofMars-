@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        span{
+            left: 0;
+            display: block;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        //简单动画封装函数 obj 为目标对象 target是目标位置   
+        let div = document.querySelector('div');
+        function animate(obj,target){
+            let timer = setInterval(function(){
+            if(obj.offsetLeft >= target){ //这里原来是400 >目标位置 所以target在这里 同样获取 obj的位置也在这里 因为这两个是需要我们变的 其他都是重复不需要写的
+                    clearInterval(timer);
+            }else{
+           obj.style.left = obj.offsetLeft + 1 +'px';} //offset只能获取值不能改变所以用 style 记得加定位 否则无法使用style.left
+        },30)
+        }
+        let span = document.querySelector('span');
+        animate(div,200);
+        animate(span,100)
+    </script>
+</body>
+</html>

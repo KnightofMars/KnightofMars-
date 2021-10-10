@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var arry = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        // var arry1 = [];
+        // var j = 0;
+        // for(var i = 0; i < arry.length; i++){
+        //     if(arry[i] >= 10){
+        //         arry1[j] = arry[i];
+        //         j++;//这里不需要纠结j++ j++跟arry1 没有任何关系
+        //     }
+        // }
+        // console.log(arry1);
+        2.
+        var arry = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var arry1 = [];
+        for(var i = 0; i < arry.length; i++){
+            if(arry[i] >= 10){
+                arry1[arry1.length] = arry[i];//length会自动检测数组变化 一开始数组为空 长度为0，所以给0 加一个值， 加完后length变为1，所以给1加一个值，再加完后length会变为2，所以给2加一个值 length变为3 程序结束；
+            }
+        }
+        console.log(arry1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

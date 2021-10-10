@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+     <div id="demo" index = '1' class="head"></div><!--//自定义属性有什么用呢 比如京东商城 的商品系列 家用电器 里面有什么洗衣机 洗碗机 冰箱  电脑手机 里面有 平板 笔记本电脑 台式 -->
+    <script> 
+        // 1.获取元素的属性
+        // (1)element.属性
+        var div = document.querySelector('div');//demo
+        console.log(div.id);
+        // (2)element.getAttribute('属性'); get获取  Attribute是属性的意思 我们程序员也可以自定义属性  我们成为index 这样比较规范
+        console.log(div.getAttribute('id'));//demo
+        console.log(div.getAttribute('index'));//1
+        // 2.设置元素的属性
+        // (1)element.属性 = '值'; 设置内置属性
+        div.id = 'xixi';
+        div.className = 'footer';
+        //(2)element.setAttribute('属性','值'); set 设置  主要设置的是自定义属性
+        div.setAttribute('index' , '2');
+        div.setAttribute('class' ,'auni');//class 比较特殊 在setAttribute中不是用className
+        // 3.消除元素属性
+        //element.removeAttribute('属性') 不想要的属性用这来移除
+        div.removeAttribute('index'); 
+        div.removeAttribute('id');
+    </script>
+</body>
+</html>

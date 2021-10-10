@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="img/ad.jpg">
+    <script>
+        // 回调函数 callback setTimeout 我们称之为回调函数 普通函数 按照代码顺序来执行 回调函数 等需要等待时间 当时间到了才回去执行  上一件事干完 再调用这个函数
+        // 以前我们讲的element.onclick = function () {
+        //     里面的函数也是回调函数
+        // }
+        var img = document.querySelector('img');
+        function fn() {
+            img.style.display = 'none';
+        }
+        var time1 = setTimeout(fn,5000);
+        var time2 = setTimeout(function () {
+            alert('即将关闭广告还有1s');
+        },4000)
+    </script>
+</body>
+</html>

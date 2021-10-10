@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.开关灯案例 -->
+    <button>开关灯</button>
+    <script>
+        //1.获取元素
+        var btn = document.querySelector('button');
+        // var b = document.querySelector('body');//这里是采用获取元素的方法 但老师是document 我没查用法 但英译的意思就是文档.body标签.修改的行内样式.属性 这样应该也是对的
+        //2.注册事件 程序运行
+        var  flag = 0;
+        btn.onclick = function(){          
+            if(flag == 0){
+                // b.style.backgroundColor = 'white'; 写错了 因为本来是白色 点击一下变黑 这样得点俩下才可以 正确变黑 
+                this.innerHTML = '开灯';
+                document.body.style.backgroundColor = 'black'
+                flag = 1 ;
+            }else{
+                // b.style.backgroundColor = 'black';
+                this.innerHTML = '关灯';
+                document.body.style.backgroundColor = '#fff'
+                flag = 0;
+            }
+
+        }
+    </script>
+</body>
+</html>

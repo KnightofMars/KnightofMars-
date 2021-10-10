@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 500px;
+            margin: 100px auto;
+             border-collapse: collapse;/*用于表格属性, 表示表格的两边框合并为一条 */
+             text-align: center;
+        }
+        td,th{
+            border: 1px solid #333;
+        }
+        thead tr{
+            height: 40px;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+     <table cellspacing = '0'> <!--像上次一样单元格空间-->
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        //分为俩部分 第一部分是表头写好的 第二部分是数据 没学数据库 用循环
+        // 创建学生数据
+        var datas = [{
+            name: '李濠江',
+            subject: 'JavaScript',
+            sorce: 99
+        },{
+            name: '李明浩',
+            subject: 'JavaScript',
+            sorce: 95
+        },{
+            name: '薛佳乐',
+            subject: 'JavaScript',
+            sorce: 90
+        },{
+            name: '吕超磊',
+            subject: 'JavaScript',
+            sorce: 100
+        },{
+            name: '毛哲',
+            subject: 'JavaScript',
+            sorce: 150
+        }];//数组里面可以存放任意种类的数据
+        // 1.获取表格的行
+        var tbody = document.querySelector('tbody');
+        for(var i = 0; i < datas.length; i++){//怎么获取行数 就是数组里每有一个对象 就是一行 这个for循环管列数
+            var tr = document.createElement('tr');//创建节点
+            tbody.appendChild(tr);//添加节点
+        // 2.创建单元格  其实就是创建列数
+            for(var k in datas[i]){//创建单元格个数取决于对象的属性个数 比如当i=0时 第一个对象有3个属性 创建3个td i++ 继续创建 这个for循环管列数
+            var td = document.createElement('td'); //创建节点
+        // 3.添加单元格的数据
+            // k 是属性 obj[k] 是属性值;
+            td.innerHTML = datas[i][k];//给节点赋值 
+            tr.appendChild(td);//添加节点
+         }
+        //  4.给删除添加单独的单元格
+        var td  = document.createElement('td');
+        td.innerHTML = "<a href='javascript:;'>删除</a>";
+        tr.appendChild(td); 
+    }
+        //  5.最后一部操作要把绑定事件放在循环外面  因为里面循环创建完了表格 
+        var as = document.querySelectorAll('a');//获取a标签
+         for(var j = 0; j < as.length; j++){
+             as[j].onclick = function(){//给每一行的删除按钮注册事件
+                tbody.removeChild(this.parentNode.parentNode);//removeChild 是删除的child this是a this.parentNode 是td this.parentNode.parentNode是 tr 也就是tbody 的child
+             }
+         }
+    </script>
+</body>
+</html>

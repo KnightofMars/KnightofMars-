@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //es6 允许给参数赋初始值
+        function add(a,b,c){
+            return a + b + c;
+        }
+        let result = add(1, 2, 3);
+        console.log(result);//6
+
+        function add1(a,b,c){
+            return a + b + c;
+        }
+        let result1 = add1(1, 2);//NAN
+        console.log(result1);
+
+        function add2(a,b,c = 3){
+            return a + b + c;
+        }
+        let result2 = add2(1, 2);
+        console.log(result2);//6
+
+
+        function add3(a,c = 3,b){//赋值一般是给最后的变量赋值，赋值在中间无意义 会被顶掉 比如c=3，底下赋值c变成2 b还是undefined 结果依旧是NAN
+            return a + b + c;
+        }
+        let result3 = add3(1, 2);
+        console.log(result3);//6
+
+        // 2.与解构赋值相结合
+        // 不解构
+        function connect(option){
+            let name = option.name;
+            let port = option.port;//每次写都会用到option;
+        }
+        connect ({
+            name:'666',
+            port:3306
+        })
+        // 进行解构后
+        function connect1({name,port}){
+            console.log(name);
+            console.log(port);
+        }
+        connect1 ({
+            name:'666',
+            port:3306
+        })
+        // 你也可以也跟赋值做一个结合 就是name='尚硅谷' 如果对象里没有name属性 name打印出来就是尚硅谷 而不是666
+    </script>
+</body>
+</html>

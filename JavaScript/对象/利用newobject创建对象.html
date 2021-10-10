@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj = new Object();//创建一个空的对象。
+        obj.name = '吕超磊';
+        obj.age = 18;
+        obj.sex = '男';//利用等号 + 赋值的方法 添加属性名和方法 每个属性名和方法之间用；隔开
+        obj.hi = function () {
+            console.log('hello');
+        }
+        console.log(obj.name);
+        console.log(obj['age']);
+        obj.hi();
+        // 案例:鸣人
+        var ming = new Object();
+        ming.name = '漩涡鸣人';
+        ming.sex = '男';
+        ming.age = 19;
+        ming.skill = function () {
+            console.log('我会多重影分身之术');
+        }
+        console.log(ming.name,ming['age'],ming.sex);
+        ming.skill();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

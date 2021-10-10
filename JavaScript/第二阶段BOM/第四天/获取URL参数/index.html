@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        console.log(location.search);
+        var parms = location.search.substring(1);//获取search 获取参数 就是?usename=andy substring(start,[end])去除? 
+        console.log(parms);
+        var arry = parms.split('=');//分隔字符串 将字符串用=分隔为数组
+        div.innerHTML = arry[1] + '欢迎你登录';
+    </script>
+</body>
+</html>

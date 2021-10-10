@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin: 200px;
+        }
+        span{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        var h = document.querySelector('.hour');
+        var m = document.querySelector('.minute');
+        var s = document.querySelector('.second');
+      
+        let inputTime = +new Date('2021-9-8 20:00:00'); // 因为 setInterval 中的调用函数 不接受任何参数 所以在外面得到时间 在函数中相减
+        countDown();//先调用一下这个函数 防止第一次刷新页面时有空白
+       
+        setInterval(countDown , 1000);
+        function countDown(){ 
+             let nowTime = +new Date();
+            let time = (inputTime - nowTime)/1000;
+            let h1 = parseInt(time / 60 / 60  ); //为什么要parseInt 因为总秒数除以60 有可能会获取小数 
+            h1 = h1 < 10 ? '0' + h1 : h1;
+            h.innerHTML = h1;
+            let m1 = parseInt(time /60 % 60);
+            m1 = m1 < 10 ? '0' + m1 : m1;
+            m.innerHTML = m1;
+            let s1 = parseInt(time % 60);
+            s1 = s1 < 10 ? '0' + s1 : s1;
+            s.innerHTML = s1; 
+            if(time <= 0){
+                  
+                //    document.body.appendChild( document.createElement('div'));这也不失为一种写法 添加一个盒子 在不用获取元素的前提下
+                document.body.children[0].innerHTML = '活动已经结束'; 
+            }
+        }
+    </script>
+</body>
+</html>

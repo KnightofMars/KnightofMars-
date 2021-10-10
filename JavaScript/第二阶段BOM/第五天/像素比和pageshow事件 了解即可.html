@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="flexible.js"></script> -->
+</head>
+
+<body>
+
+    <script>
+        console.log(window.devicePixelRatio);//返回当前显示设备的物理像素分辨率与CSS像素分辨率之比。 此值也可以解释为像素大小的比率：一个CSS像素的大小与一个物理像素的大小。 简单来说，它告诉浏览器应使用多少屏幕实际像素来绘制单个CSS像素。devicePixelRatio
+        window.addEventListener('pageshow', function() {//当一条会话历史记录被执行的时候将会触发页面显示(pageshow)事件。(这包括了后退/前进按钮操作，同时也会在onload 事件触发后初始化页面时触发) 相当于load 但是火狐为了省流量 当你退回时不会调用load 导致有些js无法执行 可以使用这个函数
+            alert(11);
+        })
+    </script>
+    <a href="http://www.itcast.cn">链接</a>
+</body>
+
+</html>

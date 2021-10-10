@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .login-header{
+            width: 100%;
+            text-align: center;
+            height: 30px;
+            font-size: 24px;
+            line-height: 30px;
+        }
+        div a span p{
+            padding: 0px;
+            margin: 0px;
+        }
+        .login{
+            display: none;
+            width: 512px;
+            height: 280px;
+            position: fixed;
+            border: #ebebeb solid 1px;
+            left: 50%;
+            top: 50%;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 20px #ddd;
+            z-index: 9999;
+            transform: translate(-50%,-50%);
+        }
+        .login-title{
+            width: 100%;
+            margin: 10px 0px 0px 0px;
+            text-align: center;
+            line-height: 40px;
+            height: 40px;
+            font-size: 18px;
+            position: relative;
+            cursor: move;
+        }
+        .login-input-content{
+            margin-top: 20px;
+        }
+        .login-button{
+            width: 50%;
+            margin: 30px auto 0px auto;
+            line-height: 40px;
+            font-size: 14px;
+            border: #ebebeb 1px solid;
+            text-align: center;
+        }
+        .login-bg{
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left:0px;
+            background:rgba(0, 0, 0, 0.3);
+
+        }
+        a{
+            text-decoration: none;
+            color: #000000;
+        }
+        .login-button a{
+            display: block;
+        }
+        .login-input input.list-input{
+            float: left;
+            line-height: 35px;
+            height: 35px;
+            width: 350px;
+            border: #ebebeb 1px solid;
+            text-indent: 5px;
+        }
+        .login-input{
+            overflow: hidden;
+            margin: 0px 0px 20px 0px;
+        }
+        .login-input label{
+            float: left;
+            width: 90px;
+            padding-right: 10px;
+            text-align:right;
+            line-height: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+        .login-title span {
+            position: absolute;
+            font-size: 12px;
+            right: -20px;
+            top: -30px;
+            background: #ffffff;
+            border: #ebebeb solid 1px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;}
+    </style>
+</head>
+<body>
+    <div class="login-header"><a id="link" href="javascript:;">点击,弹出登录框</a></div>
+    <div id="login" class="login">
+        <div id="title" class="login-title">
+            登录会员<span><a id = 'closeBtn' href = "javascript:;" class="close-login">关闭</a></span></div>
+            <div class="login-input-content">
+                <div class="login-input">
+                    <label>用户名:</label>
+                    <input type="text" placeholder="请输入用户名" id="username" class="list-input">
+                </div>
+                <div class="login-input">
+                    <label>登录密码:</label>
+                    <input type="password" placeholder="请输入登录密码啦" id="password" class="list-input">
+                </div>
+                <div id="loginBtn" class="login-button">
+                    <a href="javascript:;" id="login-button-submit">登录会员</a></div>
+                </div>      
+            </div>
+        </div>
+    </div>
+     <!-- 遮盖层 -->
+      <div id="bg" class="login-bg"></div>
+    <script>
+        var login = document.querySelector('.login')//获取登录会员的盒子
+        var mask = document.querySelector('.login-bg');//获取遮罩层
+        var link = document.querySelector('#link');//获取最开始那个点击链接a
+        let btn = document.querySelector('#closeBtn')//获取关闭会员的盒子
+        let title = document.querySelector('#title');//获取会员登录盒子的开头 可以拖动
+         // 2. 点击弹出层这个链接 link  让mask 和login 显示出来
+        link.addEventListener('click',function(){
+            mask.style.display = 'block';
+            login.style.display = 'block';
+        })
+         // 3. 点击 closeBtn 就隐藏 mask 和 login 
+        btn.addEventListener('click',function(){
+            login.style.display = 'none';
+            mask.style.display = 'none';
+        })
+        // 4.开始拖拽
+        //当鼠标按下时 获取鼠标在盒子内的坐标 
+        // 为什么不直接offset获取 是因为当鼠标按下时 盒子的offset会获取 但只获取一次 
+        title.addEventListener('mousedown',function(e) {
+                let x = e.pageX - login.offsetLeft;//pageX是鼠标按下时到body的距离 login.offsetLeft是login盒子到body的距离
+                // pageX - login.offsetLeft = x
+                let y = e.pageY  - login.offsetTop; 
+            document.addEventListener('mousemove',move)//为什么是document 是因为鼠标在文档中移动
+                function move(e) {
+                login.style.left = e.pageX - x +'px';//因为在mousemove事件里 e.page是在不断变化的 减去鼠标按下时 鼠标到盒子的距离 就是盒子在body中的距离 因为当鼠标按下去以后 鼠标到盒子的距离就固定死了 不可能随着鼠标的移动而移动
+                // 记得加 px offsetLeft 返回的是数值 并不返回单位 所以得加 px
+                login.style.top = e.pageY - y + 'px';
+            }
+            // 鼠标弹起 让移动事件解除
+            document.addEventListener('mouseup',function () {
+            document.removeEventListener('mousemove',move)
+        })
+        })
+     
+            
+    </script>
+</body>
+</html>

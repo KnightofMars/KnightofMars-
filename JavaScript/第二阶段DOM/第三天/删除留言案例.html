@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        body{
+            padding: 100px;
+        }
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+        }
+        ul{
+            margin-top: 50px;
+        }
+        li{
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        li a{
+             float: right;/*我们尽量要在css中修改样式 而不是js 因为后期维护太难 */
+        }
+    </style>
+</head>
+<body>
+    <textarea name=" " id=""></textarea>
+    <button>发布</button>
+    <ul></ul>
+
+<script>
+    // 1.获取元素
+    var text = document.querySelector('textarea');
+    var btn = document.querySelector('button');
+    var ul = document.querySelector('ul');
+    // 2.创建事件
+    btn.onclick = function(){
+        if(text.value == ''){
+            alert('输入的内容不能为空');
+         return false;
+        }else{
+        // 创建节点
+        var li = document.createElement('li');
+        li.innerHTML = text.value + "<a href = 'javascript:;'>删除</a>";
+        // 添加节点
+        ul.appendChild(li);
+        text.value = '';
+        //或者采用先发表的在前面
+        // ul.insertBefore(li,ul.children[0]);
+        var as = document.querySelectorAll('li')
+        for(var i = 0; i < as.length; i++){
+                as[i].onclick = function(){
+                    // 删除节点的方法是 node.removeChildren(children)
+                    // node 是父节点 而children是父节点的孩子 我们要删除的是 li
+                    ul.removeChild(this);
+
+                }            
+        }
+//后续案例证明我这个方法并不好 应该获取a
+        // var as = document.querySelectorAll('a')//老师的思路
+        // for(var i = 0; i < as.length; i++){
+        //         as[i].onclick = function(){
+        //             // 删除节点的方法是 node.removeChildren(children)
+        //             // node 是父节点 而children是父节点的孩子 我们要删除的是 li 但是this获取的是a  a的父亲是li 所以就是this.parentNode
+        //             ul.removeChild(this.parentNode);
+        //         }            
+        // }
+        //网友思路 但我没懂
+        // 不如直接let啊=li.children[0]；这样不需要遍历的
+        // 我直接写的当前的这个 li.children[0] 来得到a ，实现添加一个li给这个li的a绑定一次事件的操作，，反正也成功了。
+        // let a = li.children[0];
+        // a.onclick = function(){
+        //      ul.removeChild(a);
+        // }
+       
+    }
+    }
+</script>
+</body>
+</html>

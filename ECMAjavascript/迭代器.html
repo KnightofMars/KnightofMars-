@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // for in 和 for of 的区别是 for of获取值 而for in获取的是数组的下标
+        // 遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。
+        // 1) ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费
+        // 2) 原生具备 iterator 接口的数据(可用 for of 遍历)
+        // a) Array
+        // b) Arguments
+        // c) Set
+        // d) Map
+        // e) String
+        // f) TypedArray
+        // g) NodeList
+        let xiyou = ['超磊', '毛哲', '濠江', '明浩']; 
+            for(const b of xiyou){
+            console.log(b);
+        }
+
+        // 3) 工作原理
+        // a) 创建一个指针对象，指向当前数据结构的起始位置
+        let iterator = xiyou[Symbol.iterator]();//xiyou[Symbol.iterator]是函数 加() 就是得到对象
+        // b) 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员
+            console.log(iterator); //有next函数
+            console.log(iterator.next());
+            console.log(iterator.next());
+            console.log(iterator.next());
+            console.log(iterator.next()); 
+            console.log(iterator.next());
+        // c) 接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员
+        // d) 每调用 next 方法返回一个包含 value 和 done 属性的对象 value 就是表示值 而done表示是否做完循环没有做完 返回false 做完返回true
+
+        // 下面来做一个小的实践来方便进一步理解
+
+        //  需要自定义遍历数据的时候，要想到迭代器。
+
+        let obj = {
+            name: 'maozi',
+            status : [
+                'xiaohu',
+                'uzi',
+                'shanniruo',
+                'dys'
+            ],
+            [Symbol.iterator](){//error:Result of the Symbol.iterator method is not an object 说明有这个方法了 但是返回值不是对象 看上述工作原理1 
+                let index = 0;//设置一个索引号变量
+                let _this = this;//以前我们解决this作用域问题时设置的变量
+                return {//error:undefined is not a function 我们有对象了 没有next方法 所以我们再定义一个next方法
+                    next: function(){//Error: Iterator result undefined is not an object 返回结果是未定义的而不是对象 看上面next方法包含 value 和 done 所以我们继续加
+                        //return{value:'abc', done:false};//电脑直接卡死 因为done=false 不会停止 
+                        if(index <_this.status.length){//判断条件 是否大于了数组的长度 大于了返回true next方法结束 这个this也可以使用箭头函数
+                            const result ={
+                            value:_this.status[index],done:false
+                        }; 
+                        index++; 
+                        return result;
+                        }else{
+                            return{
+                                value:undefined,done:true
+                            };
+                        }  
+                    }
+                    // next: () => {//直接用箭头函数 this是静态的 指向当前作用域下的this
+                    //     if(index <this.status.length){
+                    //         const result ={
+                    //         value:this.status[index],done:false
+                    //     }; 
+                    //     index++; 
+                    //     return result;
+                    //     }else{
+                    //         return{
+                    //             value:undefined,done:true
+                    //         };
+                    //     }  
+                    // }
+                }
+
+            }
+        }
+        // 我们现在遍历这个对象
+        for (let key of obj){
+            console.log(key);//error: obj is not iterable 对象没有自带的 iterator 
+        }
+
+    </script>
+</body>
+</html>

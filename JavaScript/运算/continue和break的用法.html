@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num = 0;
+        for(var i = 1;i <= 100; i++){
+            if(i % 7 == 0){
+                continue;//continue退出当前此循环 继续下一次 如吃包子 第三个有虫子 吃五个 第三个用continue就不打印了
+            }
+            num += i;
+        }
+        console.log(num);
+        for(var j = 1; j < 5 ; j++){
+            if(j == 3){
+                break;
+            }
+            console.log('我正在吃第'+j+'个包子');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

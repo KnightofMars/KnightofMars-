@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time">2021-8-31</div>
+    <script>
+        //1.因为我们文档页面是从上往下加载，所以得先有标签，所以我们script写到标签下面
+        var timer = document.getElementById('time');//2.document就是文档的意思 get 就是获得的意思 Element是元素的意思 By就是通过 id就是id 区分大小写因为唯一识别  采用驼峰命名法
+        //返回的是一个元素对象
+        console.log(timer); 
+        console.log(typeof timer);//返回是一个对象 object
+        //5.console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法
+        console.dir(timer);
+    </script>
+</body>
+</html>

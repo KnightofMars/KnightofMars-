@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //将数组['c','a','z','a','x','a','x','c','b'];去除重复的元素 并且储存在新的数组里面；
+        //思路：用for循环遍历旧数组，用旧数组去查询新数组，用一个if语句 条件是indeof返回值为-1 如果为-1，则证明新数组里面没有新的元素，然后将这个元素添加在新数组里 
+        //用函数来封装 显示
+        function unique(arry){
+            let arry1 = [];
+            for(let i = 0; i < arry.length; i++){
+                if(arry1.indexOf(arry[i]) === -1){
+                    arry1.push(arry[i]);
+                }
+            }
+            return arry1;
+        }
+        console.log(unique(['c','a','z','a','x','a','x','c','b']));
+        console.log(unique(['pink','blue','pink']));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

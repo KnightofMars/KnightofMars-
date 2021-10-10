@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function reverse(arry){
+            var newArry = [];
+            if(Array.isArray(arry)){
+            for(var i = arry.length - 1; i >= 0; i--){
+                newArry[newArry.length] = arry[i];
+            }
+            }else{
+                return '输入的不是数组 请输入[1,2,3]这样的';
+            }
+            return newArry;
+        }
+        console.log(reverse([1,2,3]));//3,2,1
+        //此时如果输入不是数组 将会错误
+        console.log(reverse(1, 2, 3));//0
+        //检测是否为函数 1.用instanceof 运算符来判断是否是数组
+        var arry = [];
+        var obj ={};
+        console.log( arry instanceof Array);
+        console.log( obj instanceof Array);
+        //2.h5 新增的方法 Array.isArray（参数） 记住俩个A都要大写
+        console.log(Array.isArray(arry));
+        console.log(Array.isArray(obj));
+        // function reverse(){
+        //     var newArry = [];
+        //     for(var i =arguments.length - 1; i >= 0; i--){
+        //         newArry[newArry.length] = arguments[i];
+        //     }
+        //     return newArry;
+        // }
+        // console.log(reverse(1,2,3));//arguments 是在没有实参的情况下使用
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

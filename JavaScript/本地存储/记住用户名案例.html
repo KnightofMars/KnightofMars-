@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="usename"><input type="checkbox" class="remebername">记住用户名
+    <script>
+        // 1.获取元素
+        let usename = document.querySelector('.usename');
+        let remebername = document.querySelector('.remebername');
+        // 这个案例第一步先 if判断你有没有存储这个用户名 如果有的话 勾选记住用户名 并把用户名显示在文本框里
+        if (localStorage.getItem('uname')) {
+            usename.value = localStorage.getItem('uname');
+            remebername.checked = true;
+        }
+        // 第二步 勾选框的点击事件 如果没有点击 刷新页面 页面值为空 如果点击了 刷新页面 页面值依旧还在
+        remebername.addEventListener('change', function () {//change事件 状态改变触发
+            if (this.checked) {//如果被勾选了 true 执行if语句
+                localStorage.setItem('uname', usename.value);//给本地存储添加值
+            } else {
+                localStorage.removeItem('uname');//如果没有勾选那就 删除这个值
+            }
+        })
+    </script>
+</body>
+
+</html>

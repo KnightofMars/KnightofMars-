@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Person(name){
+            this.name = name;
+        }
+        function f1(x){
+            console.log(x.name);//2.输出刘德华
+            x.name = '张学友';//同一地址的值被改变 改变为张学友
+            console.log(x.name);//3.输出张学友
+        }
+        var p = new Person('刘德华');//new调用构造函数 同时也表明为复杂类型
+        console.log(p.name);//1.输出刘德华
+        f1(p);
+        console.log(p.name);//4.输出张学友
+        //复杂数据类型 形参也可以看做一个变量，当把引用类型变量传给形参时 其实是把地址复制给了形参 形参和实参保存的同一个地址 所以操作的是同一个数
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

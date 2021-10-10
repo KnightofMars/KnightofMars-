@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // BOM(Browser Object Model)浏览器 对象 模型 提供了独立内容而与浏览器窗口进行交互的对象 其核心对象是 window 
+        // Bom由一系列对象构成 每个对象都提供了方法与属性 
+        // Bom 缺乏标准 学习的是浏览器窗口交互的一些对象
+        // BOM比DOM大 windos对象是浏览的顶级对象 具有双重角色
+        // 1.是js访问浏览器的一个接口 改变浏览器大小 刷新 所以是一个接口
+        // 2.是一个全局对象 定义在全局作用域中的变量 函数都会变成window对象的属性和方法 在调用时可以省略window 前面学习的对话框 属于window对象方法 如 alert() prompt()等
+        //window的一个特殊属性 window.name 有属性值 不介意当变量使用
+        var num = 10;//全局变量 自动变成window对象的属性 函数就变成了方法
+        console.log(num);
+        console.log(window.num);
+        function fn(){
+            console.log(11);
+        }
+        fn();
+        window.fn();
+        console.dir(window);
+        console.log(window.name);
+    </script>
+</body>
+</html>

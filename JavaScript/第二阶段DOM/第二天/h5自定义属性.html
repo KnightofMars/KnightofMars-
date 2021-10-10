@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div getTime = '250' data-index="1" data-list-name="andy"></div>
+    <script>
+        // H5 引入自定义属性 为了保存并使用数据  有些数据可以保存在页面中 而不用保存在数据库中
+        // 自定义属性通过getAttribute('属性') 获取
+        var div = document.querySelector('div');//获取元素
+        console.log(div.getTime);//undefined 这个是element.属性 非标准 
+        console.log(div.getAttribute('getTime'));
+        //或者我们用setAttribute('属性'，值)来添加自定义属性
+        div.setAttribute('data-time',20);//f12 看div 
+        console.log(div.getAttribute('data-index'));
+        console.log(div.getAttribute('data-list-name'));
+        //但是有些自定义属性很容易引起歧义，不容易判断是元素的内置属性还是自定义属性
+        //所以html  H5规定自定义属性data-开头做为属性名并且赋值。
+        // 比如 <div data-index=“1”></div > 
+            // 1. 兼容性获取 element.getAttribute(‘data-index’);
+            // 2. H5新增 element.dataset.index 或者 element.dataset[‘index’] ie 11才开始支持
+            console.log(div.dataset);////dataset  set是集合的意思 就是一组集合存放了以data开头的自定义属性
+            console.log(div.dataset.index);
+            console.log(div.dataset['index']);
+            //自定义属性里面有多个 - 链接的单词 获取时 以驼峰命名法为基准  
+            console.log(div.dataset.listName);
+            console.log(div.dataset['listName']);
+        
+    </script>
+    
+</body>
+</html>

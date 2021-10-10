@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" cellspacing = '0' cellpadding = '0' width = '500' height = '249'>
+        <tr>
+            <td></td>
+            <td colspan="2"></td>
+            <!-- <td></td>  这一列的的这个单元格要被删掉 否则会多出来-->
+        </tr>
+        <tr>
+            <td rowspan="2"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <!-- <td></td> 这一行的这一个单元格要被删掉-->
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <!-- 合并单元格 合并单元格的方式有俩种 第一种就是跨行合并 rowspan = '合并单元格的个数' 
+    跨列合并 colspan = '合并单元格的个数' -->
+    <!-- 找到目标单元格 
+    跨行的 最上侧单元格为目标单元格
+    跨列的 最左侧单元格为目标单元格 -->
+    <!-- 合并三部曲 
+    1.分析属于哪种合并
+    2.找到目标单元格 写合并公式 rowspan = '合并单元格的个数'
+    3.删除多余的单元格 -->
+</body>
+</html>

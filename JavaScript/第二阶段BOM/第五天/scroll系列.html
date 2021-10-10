@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            border: 20px solid red;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+        我是内容你好吗
+    </div>
+    <script>
+        // scroll 滚动的 使用相关属性动态的获得该元素大小 滚动距离  
+        var div = document.querySelector('div');
+        // element.scrollWidth 返回自身实际的宽度，不含边框 返回数组不带单位 比如内容溢出 client 获得还是盒子自身大小 但是 scroll会获得盒子自身加溢出去部分的大小
+        console.log(div.scrollWidth);
+        console.log(div.scrollHeight);
+        console.log(div.clientHeight);
+        console.log(div.clientWidth);
+        // scroll滚动实际当我们滚动条发生变化时会触发的事件
+        //如果浏览器的高（或宽）度不足以显示整个页面时，会自动出现滚动条。当滚动条向下滚动时，页面上面被隐藏掉的高度，我们就称为页面被卷去的头部。滚动条在滚动时会触发 onscroll 事件
+        div.addEventListener('scroll',function(){
+            // element.scrollTop 是返回被卷上去的距离 返回不带单位
+            // element.scrollLeft 是返回被卷去的左侧距离 返回值不带单位
+            console.log(div.scrollTop);
+            // 滚动条拉到最下面就是scrollHeight - clientHeight
+            // 这个也是最常用的
+        })
+
+        // scroll系列是获取元素滚动距离 scrollTop scrollLeft
+        // 页面滚动获取距离是 window.pageXOffset   window.pageYOffset
+    </script>
+</body>
+</html>

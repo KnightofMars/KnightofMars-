@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arry = [1, 2, 3, 4 ,5 ,6 ,7];
+        var  temp;
+        for(var i = 0; i < arry.length - 1; i++){//这是表示循环的趟数;
+            for( var j = 0; j < arry.length - i - 1; j++){//这是表示一趟中循环的比较次数，每循环一趟，一个值会被固定;就像打擂台 输的人没资格了 赢的和下一个打；
+                if(arry[j]<arry[j+1]){//这就是最基本的比大小；交换变量
+                    temp = arry[j] ;
+                    arry[j] = arry[j+1];
+                    arry[j+1] = temp;
+                }
+            }
+        }
+        console.log(arry);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> .slider-bar{/*滑动条  */
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    margin-left: 600px;
+    width: 45px;
+    height: 130px;
+    background-color: pink;
+    }
+    .w{
+        width: 1200px;
+        margin: 10px auto;
+    }
+    .header{
+        height: 150px;
+        background-color: purple;
+    }
+    .banner{
+        height: 250px;
+        background-color: skyblue;
+    }
+    .main{height: 1000px;
+    background-color: yellowgreen;}
+    span{
+        display: none;
+        position: absolute;
+        bottom: 0;
+    }
+    </style>
+</head>
+<body>
+   <div class="slider-bar">
+       <span class="goback">返回顶部</span></div>
+    <div class="header w">我是头部</div>
+    <div class="banner w">我是banner</div>
+    <div class="main w">我是主体部分</div>
+   <script>
+    // 案例分析 
+    //  原先侧边栏是绝对定位
+    //  当页面滚动到一定位置，侧边栏改为固定定位
+    //  页面继续滚动，会让 返回顶部显示出
+    //1. 获取元素
+    let slider = document.querySelector('.slider-bar');//获取滚动条
+    let banner = document.querySelector('.banner')//获取banner 因为我们想让移动到banner部分时 滚动条由absolute 改为fixed 定位
+   
+    let bannerTop = banner.offsetTop;//一打开网页时 获取banner 到页面顶部的距离
+    let sliderTop = slider.offsetTop - bannerTop;//sliderTop 是当滚动条的位置有absolute 变成fixed固定在侧边栏时 滚动条到最上方的距离 - banner到最上方的距离 我们要得到这个值 因为当变为fixed时 我们要一直保持这个距离 要放在外面 因为放在里面会不停的刷新获取
+    let main = document.querySelector('.main');
+    let goback = document.querySelector('.goback');
+    let mainTop = main.offsetTop;//获取main 到页面顶部的距离
+    // 2.页面滚动事件 scroll
+    document.addEventListener('scroll',function(){
+        if(window.pageYOffset >= bannerTop){ //window.pageYOffset 获取页面被卷去的头部 也就是当你拉滚动条 上面被淹没的那部分高度 为什么不用scrollTop 因为 element.scrollTop 获取的是 元素被卷去的头部 就是盒子内容超出去了 你在盒子里有滚动条 获取的是那个被卷去的头部
+            slider.style.position = 'fixed';
+            //当直接切换为fixed时 我们拖动 会晃一下 跳到下面 因为刚开始盒子是有top值的 所以当变为fixed时 会自动获取这个top值 并且固定top值的长度 
+           slider.style.top = sliderTop + 'px';    
+        }else{
+            slider.style.position = 'absolute';
+            slider.style.top = '300px'//这里为啥不用动态的 因为最开始这个滚动条就是absolute 位置在距离最上方是300px
+        }
+        // 3.我们又想让滚动到main盒子时 开始显示文字 回到顶部
+        if(window.pageYOffset >= mainTop){
+            goback.style.display = 'block'
+        }else{
+            goback.style.display = 'none';
+        }
+    })
+    // ① 需要用到页面滚动事件 scroll 因为是页面滚动，所以事件源是 document
+    // ② 滚动到某个位置，就是判断页面被卷去的上部值。
+    // ③ 页面被卷去的头部：可以通过window.pageYOffset 获得 如果是被卷去的左侧 window.pageXOffset
+    // ④ 注意，元素被卷去的头部是 element.scrollTop , 如果是页面被卷去的头部 则是 window.pageYOffset
+    // ⑤ 其实这个值 可以通过盒子的 offsetTop 可以得到，如果大于等于这个值，就可以让盒子固定定位了
+   </script>
+</body>
+</html>

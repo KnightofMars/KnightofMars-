@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        span{
+            display: block;
+            left: 0;
+            top: 300px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>  
+    <button class="btn500">点击让超磊到500</button>
+    <button class="btn800">点击让超磊到800</button>
+    <span>超磊</span>
+    <script>
+        // 回调函数原理 函数可以作为一个参数  将这个函数作为参数传递到另一个函数里面 当另一个函数执行完毕以后再去调用这个穿进去的函数 这个过程叫作回调
+        let span = document.querySelector('span');
+        let btn500 = document.querySelector('.btn500');
+        let btn800 = document.querySelector('.btn800');
+        function animate(obj,target,callback){
+            console.log(callback);
+            clearInterval( obj.timer);
+            obj.timer = setInterval(function(){
+                 let step = (target - obj.offsetLeft) / 10;
+                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if(obj.offsetLeft == target){ 
+                    clearInterval(obj.timer);
+                    if(callback){
+                        callback();//回调函数写的位置 定时器结束的时候 因为是要在运行完了以后变色 不是你点击时变色
+                    }
+            }else{
+           obj.style.left = obj.offsetLeft + step +'px';//step 会一直变小 
+        } 
+        },15)
+        }
+        btn500.addEventListener('click',function(){
+            animate(span,500,function(){//function(){}相当于一个函数 作为形参 传递给了 animate函数里面的callback;
+                span.style.backgroundColor = 'red';
+            });
+        })
+        btn800.addEventListener('click',function(){
+            animate(span,800,function(){
+                span.style.backgroundColor = 'pink';
+                        });
+        })
+       
+        
+    </script>
+</body>
+</html>

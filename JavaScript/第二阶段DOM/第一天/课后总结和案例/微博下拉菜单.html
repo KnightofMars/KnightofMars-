@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            list-style-type: none;
+        }
+        .box{
+            display: none;
+        }
+        /* .dd{
+            display: none;
+        } */
+    </style>
+</head>
+<body>
+    <div>
+    <li>菜单</li>
+    <div class="box">
+    <li>你好</li>
+    <li>不好</li>
+    <li>哭唧唧</li>
+    </div>
+    </div> 
+    <script>
+        // 1.获取元素
+        var box = document.querySelector('.box');
+        var li = document.querySelector('li');
+        //2.注册事件 程序运行
+        li.onclick = function(){
+            box.style.display = 'inline'
+        }
+    //     <div class="dropdown">
+    //     <div class="dt">微博</div>
+    //     <div class="dd">
+    //         <ul>
+    //             <li>评论</li>
+    //             <li>私信</li>
+    //             <li>@我</li>
+    //         </ul>
+    //     </div>
+    // </div>
+    // <script>
+    //     var dropdown = document.querySelector('.dt')
+    //     var list = document.querySelector('.dd')
+    //     dropdown.onmouseover = function() {
+    //         list.style.display = 'block'
+    //     }
+    //     dropdown.onmouseout = function() {
+    //         list.style.display = 'none'
+    //     }
+//  document.querySelector（）按类名获取对象时括号里应为字符串。
+// .onmouseover:当鼠标移动到某对象范围的上方时触发的事件。
+// .onmouseout：当鼠标离开某对象范围时触发的事件。
+    // </script>
+
+    </script> 
+ </body>
+    </html>

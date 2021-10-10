@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>    </div>
+    <script>
+        // 1. touchstart、touchmove、touchend 可以实现拖动元素
+        // 2. 但是拖动元素需要当前手指的坐标值 我们可以使用 targetTouches[0] 里面的pageX 和 pageY 
+        // 3. 移动端拖动的原理： 手指移动中，计算出手指移动的距离。然后用盒子原来的位置 + 手指移动的距离
+        // 4. 手指移动的距离： 手指滑动中的位置 减去 手指刚开始触摸的位置
+        // 拖动元素三步曲：
+        // （1） 触摸元素 touchstart： 获取手指初始坐标，同时获得盒子原来的位置
+        // （2） 移动手指 touchmove： 计算手指的滑动距离，并且移动盒子
+        // （3） 离开手指 touchend:
+        // 注意： 手指移动也会触发滚动屏幕所以这里要阻止默认的屏幕滚动 e.preventDefault()
+        // 思路 拖动元素 就是手指移动的距离 + 盒子本来的位置 手指的位置可 e.targetTouches[i]可以获取x，y 盒子是offset获取 start时获取起始位置 move时不断刷新获取结束的位置 终点-起点 就是移动的距离 然后再move事件里面赋值 不停的更新移动
+        let div = document.querySelector('div');
+        let startX = 0;//手指起始位置 设为全局变量是因为move事件也要调用
+        let startY = 0;
+        let x = 0;//盒子起始位置
+        let y = 0;
+        div.addEventListener('touchstart',function(e){
+           startX = e.targetTouches[0].pageX;//pc端模拟 只能有一个手指 所以获取第一个手指触摸时的x坐标
+           startY = e.targetTouches[0].pageY;
+           x = this.offsetLeft;
+           y = this.offsetTop;
+        })
+       
+        div.addEventListener('touchmove',function(e){
+           let moveX = e.targetTouches[0].pageX - startX;
+           let moveY = e.targetTouches[0].pageY - startY;
+           div.style.left = moveX + x + 'px';
+           div.style.top = moveY + y +'px';
+           e.preventDefault();//防止屏幕滚动 因为我们平时左划右划屏幕的时候 屏幕也是在touchstart和touchmove所以加一个 e.preventDefault()阻止屏幕滚动的默认行为
+        })
+      
+        div.addEventListener('touchend',function(){})//没有用到touched事件 因为move结束的时候相当于触摸停止和pc端还不一样
+    </script>
+</body>
+</html>

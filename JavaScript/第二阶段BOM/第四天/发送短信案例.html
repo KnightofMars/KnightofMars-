@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+         手机号码 <input type = 'number'>
+        <button>发送</button>
+ <script>
+     var input = document.querySelector('input');
+     var button = document.querySelector('button');
+     var time = 10;
+     button.addEventListener('click',function () {
+        button.disabled = true;
+        fn()//先执行一下这个函数 这样就不会有1s卡顿 
+        function fn() {
+            if(time == 0){ 
+            clearInterval(timer);
+             button.disabled = false;
+             button.innerHTML = '发送';
+             time = 10;//记得时间也要重新开始 
+            }else{  button.innerHTML = '还有'+ time +'秒发送';
+            time--;
+         }
+        }
+        var timer = setInterval(fn , 
+        //     if(time == 0){ 
+        //     clearInterval(timer);
+        //      button.disabled = false;
+        //      button.innerHTML = '发送';
+        //      time = 10;//记得时间也要重新开始 
+        //     }else{  button.innerHTML = '还有'+ time +'秒发送';
+        //     time--;
+        //  }
+         1000)
+        //  单标签时value 双标签innerHTML
+        //这个案例有延迟 1s 因为一秒以后才开始
+     })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

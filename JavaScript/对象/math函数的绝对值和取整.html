@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //绝对值的方法 math.abs
+        console.log(Math.abs(1));//1
+        console.log(Math.abs(-1));//1
+        console.log(Math.abs('1'));//1 直接隐式转换为1
+        console.log(Math.abs('liu'));//NaN
+        //Math.floot（） math取整 向下取整 即取最小的值  地板
+        console.log(Math.floor(1.1));//1
+        console.log(Math.floor(1.9));//1
+        console.log(Math.floor(1.4));//1
+        //Math.ceil（）  天花板 向上取整 取最大的值
+        console.log(Math.ceil(1.1));//2
+        console.log(Math.ceil(1.9));//2
+        console.log(Math.ceil(1.4));//2
+        //Math.round（）四舍五入 懂得都懂 但是.5比较特殊 只会取靠近大的那边 比如负数中
+        console.log(Math.round(1.4));//1
+        console.log(Math.round(1.1));//1
+        console.log(Math.round(1.9));//2
+        console.log(Math.round(-1.4));//-1
+        console.log(Math.round(-1.1));//-1
+        console.log(Math.round(-1.5));//-1
+        console.log(Math.round(-1.9));//-2
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
